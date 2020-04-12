@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm build
+RUN npm run build
 EXPOSE 4200
 RUN cd dist/med-broker-ui
 CMD [ "npm", "start" ]
