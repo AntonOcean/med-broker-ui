@@ -144,5 +144,10 @@
   },
   "rulesDirectory": [
     "codelyzer"
-  ]
+  ],
+  "linterOptions": {
+    "exclude": [
+      "*.html"
+    ]
+  }
 }

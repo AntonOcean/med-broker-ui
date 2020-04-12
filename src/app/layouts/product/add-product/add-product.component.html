@@ -1,0 +1,77 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Добавить анализ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation" #addProductForm="ngForm" (ngSubmit)="createProduct(addProductForm)">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="productName">Название</label>
+              <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="product.productName" placeholder="Кровь"
+                value="" required>
+              <div class="invalid-feedback">
+                Введите название.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="productCategory">Категория</label>
+              <input type="text" class="form-control" id="productCategory" name="productCategory" [(ngModel)]="product.productCategory"
+                placeholder="Категория" value="" required>
+              <div class="invalid-feedback">
+                Введите категорию.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="productDescription">Описание
+              <span class="text-muted">(Доп)</span>
+            </label>
+            <textarea type="text" class="form-control" id="productDescription" placeholder="" name="productDescription"
+              [(ngModel)]="product.productDescription"></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="productPrice">Цена</label>
+              <input type="number" name="productPrice" class="form-control" [(ngModel)]="product.productPrice" placeholder="324.00"
+                id="productPrice" value="" required>
+              <div class="invalid-feedback">
+                Введите цену.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="productQuatity">Срок исполнения (рабочии дни)</label>
+              <input type="text" class="form-control" id="productQuatity" name="productQuatity" [(ngModel)]="product.productQuatity" placeholder="12"
+                value="" required>
+              <div class="invalid-feedback">
+                Введите кол-во рабочих дней.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="productSeller">Поставщик</label>
+            <input type="text" class="form-control" id="productSeller" [(ngModel)]="product.productSeller" name="productSeller" placeholder="ООО ЦМД"
+              required>
+          </div>
+          <div class="mb-3">
+            <label for="productImageUrl">Изображение(Промо)</label>
+            <input type="text" class="form-control" id="productImageUrl" [(ngModel)]="product.productImageUrl" name="productImageUrl"
+              placeholder="Ссылка" required>
+          </div>
+
+          <hr class="mb-4">
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Добавить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
