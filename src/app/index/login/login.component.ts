@@ -1,7 +1,7 @@
 import {ToastrService} from './../../shared/services/toastr.service';
-import {NgForm, EmailValidator} from '@angular/forms';
+import {EmailValidator, NgForm} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../shared/services/user.service';
 import {AuthService} from '../../shared/services/auth.service';
 import {User} from '../../shared/models/user';
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
 
         this.userService.createUser(user);
 
-        this.toastService.success('Registering', 'User Registeration');
+        this.toastService.success('Регистрация', 'Вы зарегистрированы!');
 
         setTimeout((router: Router) => {
           $('#createUserForm').modal('hide');
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
       .catch((err) => {
         this.errorInUserCreate = true;
         this.errorMessage = err;
-        this.toastService.error('Error while Creating User', err);
+        this.toastService.error('Ошибка при регистрации', err);
       });
   }
 
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .signInRegular(userForm.value.emailId, userForm.value.loginPassword)
       .then((res) => {
-        this.toastService.success('Authentication Success', 'Logging in please wait');
+        this.toastService.success('Вход выполнен', 'Проверяются данные');
 
         const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
 
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       })
       .catch((err) => {
-        this.toastService.error('Authentication Failed', 'Invalid Credentials, Please Check your credentials');
+        this.toastService.error('Вход не выполнен', 'Введен неверный логин\\пароль');
       });
   }
 
@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       })
       .catch((err) => {
-        this.toastService.error('Error Occured', 'Please try again later');
+        this.toastService.error('Ошибка', 'Попробуйте позже');
       });
   }
 }
