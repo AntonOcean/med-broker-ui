@@ -66,7 +66,7 @@ export class ProductService {
     let a: Product[];
     a = JSON.parse(localStorage.getItem('avf_item')) || [];
     a.push(data);
-    this.toastrService.wait('Adding Product', 'Adding Product as Favourite');
+    this.toastrService.wait('Добавлен', 'Анализ добавлен в избранное');
     setTimeout(() => {
       localStorage.setItem('avf_item', JSON.stringify(a));
       this.calculateLocalFavProdCounts();
@@ -117,7 +117,7 @@ export class ProductService {
     a = JSON.parse(localStorage.getItem('avct_item')) || [];
 
     a.push(data);
-    this.toastrService.wait('Adding Product to Cart', 'Product Adding to the cart');
+    this.toastrService.wait('Добавлен', 'Анализ добавлен в корзину');
     setTimeout(() => {
       localStorage.setItem('avct_item', JSON.stringify(a));
       this.calculateLocalCartProdCounts();

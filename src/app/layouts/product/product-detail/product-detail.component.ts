@@ -1,5 +1,5 @@
 import {Product} from '../../../shared/models/product';
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProductService} from '../../../shared/services/product.service';
 import {ToastrService} from 'src/app/shared/services/toastr.service';
@@ -40,7 +40,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this.product = y;
       },
       (error) => {
-        this.toastrService.error('Error while fetching Product Detail', error);
+        this.toastrService.error('Ошибка ', error);
       }
     );
   }

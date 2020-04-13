@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
   productList: Product[];
   loading = false;
   // TODO добавить категории с продуктов
-  brands = ['Все', 'Категория 1', 'Категория 2', 'Категория 3', 'Категория 4', 'Категория 5'];
+  brands = new Set(['Все']);
 
   selectedBrand: 'Все';
 
@@ -43,10 +43,11 @@ export class ProductListComponent implements OnInit {
           const y = element.payload.toJSON();
           y['$key'] = element.key;
           this.productList.push(y as Product);
+          this.brands.add(y['productCategory'].trim());
         });
       },
       (err) => {
-        this.toastrService.error('Error while fetching Products', err);
+        this.toastrService.error('Ошибка ', err);
       }
     );
   }
