@@ -1,4 +1,4 @@
-FROM node:12.14.0-alpine
+FROM node:alpine AS builder
 
 WORKDIR /usr/src/app
 
@@ -12,6 +12,14 @@ RUN npm install
 COPY . .
 
 RUN npm run build --prod --no-progress
-EXPOSE 4200
-RUN cd dist/med-broker-ui
-CMD [ "npm", "start" ]
+
+
+FROM nginx:alpine
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=builder /app/dist/med-broker-ui /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
