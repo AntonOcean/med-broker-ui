@@ -19,7 +19,7 @@ export class ResultComponent implements OnInit {
   constructor(private productService: ProductService) {
     /* Hiding Billing Tab Element */
     document.getElementById('productsTab').style.display = 'none';
-    document.getElementById('shippingTab').style.display = 'none';
+    // document.getElementById('shippingTab').style.display = 'none';
     document.getElementById('billingTab').style.display = 'none';
     document.getElementById('resultTab').style.display = 'block';
 

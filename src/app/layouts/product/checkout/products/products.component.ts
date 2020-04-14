@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
   totalPrice = 0;
 
   constructor(productService: ProductService) {
-    document.getElementById('shippingTab').style.display = 'none';
+    // document.getElementById('shippingTab').style.display = 'none';
     document.getElementById('billingTab').style.display = 'none';
     document.getElementById('resultTab').style.display = 'none';
 
