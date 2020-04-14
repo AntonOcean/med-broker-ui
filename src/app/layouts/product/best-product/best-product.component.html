@@ -17,10 +17,10 @@
     <app-card-loader [loop]="4" [height]="500"></app-card-loader>
   </div>
 
-  <owl-carousel *ngIf="!loading" [options]="options" [items]="bestProducts" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+  <owl-carousel-o *ngIf="!loading" [options]="options">
     <!--First column-->
-    <div class="item" style="padding:20px" *ngFor="let product of bestProducts;let i = index">
-      <div class=" mb-r">
+    <ng-container class="item" style="padding:20px" *ngFor="let product of bestProducts;let i = index">
+      <ng-template carouselSlide class=" mb-r">
 
         <!--Card-->
         <div class="card border shadow card-cascade wider">
@@ -65,9 +65,9 @@
           <!--/.Card content-->
         </div>
         <!--/.Card-->
-      </div>
+      </ng-template>
       <!--/First column-->
-    </div>
-  </owl-carousel>
+    </ng-container>
+  </owl-carousel-o>
 </section>
 <!--Section: Products v.2-->

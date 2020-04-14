@@ -37,6 +37,7 @@
     "moment": "^2.24.0",
     "ngx-content-loading": "latest",
     "ngx-owl-carousel": "latest",
+    "ngx-owl-carousel-o": "^3.0.0",
     "ngx-pagination": "latest",
     "node-sass": "^4.13.1",
     "owl.carousel": "^2.3.4",
