@@ -20,6 +20,6 @@ RUN rm -rf /usr/share/nginx/html/*
 
 COPY --from=builder /usr/src/app/dist/med-broker-ui /usr/share/nginx/html
 
-COPY --from=builder nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /usr/src/app/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
