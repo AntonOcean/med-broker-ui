@@ -18,7 +18,7 @@ FROM nginx:alpine
 
 RUN rm -rf /usr/share/nginx/html/*
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist/med-broker-ui /usr/share/nginx/html
 
 EXPOSE 80
 
