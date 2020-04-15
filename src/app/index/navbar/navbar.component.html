@@ -11,7 +11,7 @@
   </button>
 
   <!-- Collapsible content -->
-  <div class="navbar-collapse collapse" [ngbCollapse]="isCollapsed" id="basicExampleNav">
+  <div class="navbar-collapse collapse" [ngClass]="{'show': !isCollapsed}" id="basicExampleNav">
 
     <!-- Links -->
     <ul class="navbar-nav mr-auto">

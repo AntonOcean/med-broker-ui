@@ -23,7 +23,6 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "@angular/service-worker": "latest",
-    "@ng-bootstrap/ng-bootstrap": "latest",
     "angular-bootstrap-md": "^9.0.1",
     "angularfire2": "latest",
     "animate.css": "^3.7.2",

@@ -5,7 +5,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import {FormsModule, FormBuilder} from '@angular/forms';
+import {FormBuilder, FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {OwlModule} from 'ngx-owl-carousel';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -28,7 +28,6 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -45,8 +44,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBWCStFUeFFi5SlkQUve3_c8i6Y-LbQAyo'
     }),
-    NgxContentLoadingModule,
-    NgbModule
+    NgxContentLoadingModule
   ],
   declarations: [
     NoProductsFoundComponent,
