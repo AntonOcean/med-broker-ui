@@ -56,8 +56,11 @@
             <div class="card-footer">
               <span class="left">{{ product.productPrice }} ₽</span>
               <span class="right">
-                <a placement="top" mdbTooltip="Добавить в избранное" container="body">
+                <a placement="top" mdbTooltip="Добавить в избранное" container="body" (click)="addFavourite(product)">
                   <i class="fa fa-heart"></i>
+                </a>
+                <a placement="top" mdbTooltip="Добавить в корзину" container="body" (click)="addToCart(product)">
+                  <i class="fa fa-shopping-cart"></i>
                 </a>
               </span>
             </div>
