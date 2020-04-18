@@ -3,6 +3,8 @@ import {AngularFireDatabase, AngularFireList, AngularFireObject} from 'angularfi
 import {Product} from '../models/product';
 import {AuthService} from './auth.service';
 import {ToastrService} from './toastr.service';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class ProductService {
@@ -18,6 +20,7 @@ export class ProductService {
   navbarFavProdCount = 0;
 
   constructor(
+    private http: HttpClient,
     private db: AngularFireDatabase,
     private authService: AuthService,
     private toastrService: ToastrService
@@ -26,9 +29,8 @@ export class ProductService {
     this.calculateLocalCartProdCounts();
   }
 
-  getProducts() {
-    this.products = this.db.list('products');
-    return this.products;
+  getProducts(): Observable<Product[]> {
+      return this.http.get<Product[]>('/api/medset');
   }
 
   createProduct(data: Product) {
@@ -38,6 +40,10 @@ export class ProductService {
   getProductById(key: string) {
     this.product = this.db.object('products/' + key);
     return this.product;
+  }
+
+  getProductByIdNew(key: string) {
+    return this.http.get<Product>(`/api/medset/${key}`);
   }
 
   updateProduct(data: Product) {

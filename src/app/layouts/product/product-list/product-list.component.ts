@@ -10,7 +10,7 @@ import {ToastrService} from 'src/app/shared/services/toastr.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  productList: Product[];
+  productList: Product[] = [];
   loading = false;
   // TODO добавить категории с продуктов
   brands = new Set(['Все']);
@@ -33,18 +33,13 @@ export class ProductListComponent implements OnInit {
   getAllProducts() {
     // this.spinnerService.show();
     this.loading = true;
-    const x = this.productService.getProducts();
-    x.snapshotChanges().subscribe(
-      (product) => {
-        this.loading = false;
-        // this.spinnerService.hide();
-        this.productList = [];
-        product.forEach((element) => {
-          const y = element.payload.toJSON();
-          y['$key'] = element.key;
-          this.productList.push(y as Product);
-          this.brands.add(y['productCategory'].trim());
+    this.productService.getProducts().subscribe(
+      products => {
+        products.forEach(product => {
+          this.productList.push(product);
+          this.brands.add(product.productCategory.trim());
         });
+        this.loading = false;
       },
       (err) => {
         this.toastrService.error('Ошибка ', err);

@@ -40,29 +40,16 @@ export class BestProductComponent implements OnInit {
   }
 
   getAllProducts() {
-    const x = this.productService.getProducts();
-    x.snapshotChanges().subscribe(
-      (product) => {
-        this.bestProducts = [];
-
-        // let size = 5;
-        // if (product.length < 5) {
-        //   size = product.length;
-        // }
-        for (let i = 0; i < 5; i++) {
-          const y = product[i].payload.toJSON();
-          y['$key'] = product[i].key;
-          this.bestProducts.push(y as Product);
-        }
+    this.loading = true;
+    this.productService.getProducts().subscribe(
+      products => {
+        products.forEach(product => {
+          this.bestProducts.push(product);
+        });
         this.loading = false;
-        // product.forEach(element => {
-        //   const y = element.payload.toJSON();
-        //   y["$key"] = element.key;
-        //   this.bestProducts.push(y as Product);
-        // });
       },
-      (error) => {
-        this.toasterService.error('Error while fetching Products', error);
+      (err) => {
+        this.toasterService.error('Ошибка ', err);
       }
     );
   }

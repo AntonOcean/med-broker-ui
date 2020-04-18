@@ -1,0 +1,9 @@
+{
+  "/api/*": {
+    "target": "http://95.163.248.36:8081",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": "/v1/ui"
+    }
+  }
+}

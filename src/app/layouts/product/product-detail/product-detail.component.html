@@ -47,8 +47,8 @@
               <td>{{product.productQuatity}}</td>
             </tr>
             <tr>
-              <th scope="row">Дата</th>
-              <td>{{product.productAdded * 1000 | date}}</td>
+              <th scope="row">Свободное место на</th>
+              <td>{{product.productAdded * 1000 | date: 'dd MMMM yyyy, EEEE': '': 'ru'}}</td>
             </tr>
           </tbody>
         </table>

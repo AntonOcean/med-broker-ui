@@ -1,6 +1,5 @@
-import { Routes } from '@angular/router';
-import { NoAccessComponent } from './shared/components/no-access/no-access.component';
-import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import {Routes} from '@angular/router';
+import {NoAccessComponent} from './shared/components/no-access/no-access.component';
 
 export const AppRoutes: Routes = [
   {
@@ -25,5 +24,5 @@ export const AppRoutes: Routes = [
     ]
   },
   { path: 'no-access', component: NoAccessComponent },
-  { path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
