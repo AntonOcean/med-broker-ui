@@ -1,4 +1,4 @@
-import {ToastrService} from './../../shared/services/toastr.service';
+import {ToastrService} from '../../shared/services/toastr.service';
 import {EmailValidator, NgForm} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         setTimeout((router: Router) => {
           $('#createUserForm').modal('hide');
           this.router.navigate(['/']);
-        }, 1500);
+        }, 800);
       })
       .catch((err) => {
         this.errorInUserCreate = true;
@@ -71,13 +71,13 @@ export class LoginComponent implements OnInit {
     this.authService
       .signInRegular(userForm.value.emailId, userForm.value.loginPassword)
       .then((res) => {
-        this.toastService.success('Вход выполнен', 'Проверяются данные');
+        this.toastService.success('Вход выполнен', '');
 
         const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
 
         setTimeout((router: Router) => {
           this.router.navigate([returnUrl || '/']);
-        }, 1500);
+        }, 800);
 
         this.router.navigate(['/']);
       })
@@ -93,9 +93,10 @@ export class LoginComponent implements OnInit {
         if (res.additionalUserInfo.isNewUser) {
           this.userService.createUser(res.additionalUserInfo.profile);
         }
-        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-        location.reload();
-        this.router.navigate(['/']);
+        this.toastService.success('Вход выполнен', '');
+        setTimeout((router: Router) => {
+          this.router.navigate(['/']);
+        }, 800);
       })
       .catch((err) => {
         this.toastService.error('Ошибка', 'Попробуйте позже');
