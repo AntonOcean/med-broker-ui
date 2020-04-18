@@ -1,6 +1,6 @@
 import {Product} from '../../../../shared/models/product';
 import {ShippingService} from '../../../../shared/services/shipping.service';
-import {UserDetail, User} from '../../../../shared/models/user';
+import {User, UserDetail} from '../../../../shared/models/user';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
@@ -50,7 +50,7 @@ export class ShippingDetailsComponent implements OnInit {
 
     this.products.forEach((product) => {
       delete product.$key;
-      totalPrice += product.productPrice;
+      totalPrice = totalPrice + +product.productPrice;
       products.push(product);
     });
 

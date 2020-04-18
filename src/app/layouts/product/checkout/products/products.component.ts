@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
     this.checkoutProducts = products;
 
     products.forEach((product) => {
-      this.totalPrice += product.productPrice;
+      this.totalPrice = this.totalPrice + +product.productPrice;
     });
   }
 

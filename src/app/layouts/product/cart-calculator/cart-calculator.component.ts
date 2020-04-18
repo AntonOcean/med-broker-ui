@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges} from '@angular/core';
 import {Product} from '../../../shared/models/product';
 
 @Component({
@@ -20,7 +20,7 @@ export class CartCalculatorComponent implements OnInit, OnChanges {
     const products: Product[] = dataChanges.currentValue;
     this.totalValue = 0;
     products.forEach((product) => {
-      this.totalValue += product.productPrice;
+      this.totalValue = this.totalValue + +product.productPrice;
     });
   }
 
