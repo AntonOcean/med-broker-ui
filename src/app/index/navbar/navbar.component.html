@@ -5,8 +5,9 @@
   <a class="navbar-brand" href="javascript:;;">Med Broker</a>
 
   <!-- Collapse button -->
-  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" data-toggle="collapse" data-target="#basicExampleNav"
-    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+          data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -24,8 +25,9 @@
         <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/products/all-products' ]">{{
           this.translate.data["PRODUCTS"] | translate}}</a>
       </li>
-      <li class="nav-item" *ngIf="authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" href="http://95.163.248.36/" >{{
+      <li class="nav-item" *ngIf="authService.isAdmin()" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" href="http://95.163.248.36/">{{
           this.translate.data["TASKBOARD"] | translate}}</a>
       </li>
       <!-- <li class="nav-item">
@@ -60,74 +62,76 @@
       </li>
 
       <!--<li class="nav-item dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" dropdown>-->
-        <!--<a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light">-->
-          <!--<i class="fa fa-paint-brush"> </i><span class="caret"></span></a>-->
-        <!--<div *dropdownMenu class="dropdown-menu dropdown dropdown-primary color-dropdown" role="menu">-->
-          <!--<div class="row p-2" style="margin:0">-->
-            <!--<div class="col-sm-6 hover-effect" data-toggle="tooltip" data-placement="bottom" title="Purple Theme"-->
-              <!--style="padding: 0">-->
-              <!--<div class="color-container" (click)="updateTheme('purple-theme')">-->
-                <!--<div class="colorDiv color-purple">-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-sm-6 hover-effect" data-toggle="tooltip" data-placement="bottom" title="Blue Theme"-->
-              <!--style="padding: 0">-->
-              <!--<div class="color-container" (click)="updateTheme('blue-theme')">-->
-                <!--<div class="colorDiv color-blue">-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="row p-2" style="margin:0">-->
-            <!--<div class="col-sm hover-effect" data-toggle="tooltip" data-placement="bottom" title="Red Theme"-->
-              <!--style="padding: 0">-->
-              <!--<div class="color-container">-->
-                <!--<div class="colorDiv color-red" (click)="updateTheme('red-theme')">-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-sm hover-effect" data-toggle="tooltip" data-placement="bottom" title="Violet Theme"-->
-              <!--style="padding: 0">-->
-              <!--<div class="color-container">-->
-                <!--<div class="colorDiv color-violet" (click)="updateTheme('violet-theme')">-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
+      <!--<a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light">-->
+      <!--<i class="fa fa-paint-brush"> </i><span class="caret"></span></a>-->
+      <!--<div *dropdownMenu class="dropdown-menu dropdown dropdown-primary color-dropdown" role="menu">-->
+      <!--<div class="row p-2" style="margin:0">-->
+      <!--<div class="col-sm-6 hover-effect" data-toggle="tooltip" data-placement="bottom" title="Purple Theme"-->
+      <!--style="padding: 0">-->
+      <!--<div class="color-container" (click)="updateTheme('purple-theme')">-->
+      <!--<div class="colorDiv color-purple">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-sm-6 hover-effect" data-toggle="tooltip" data-placement="bottom" title="Blue Theme"-->
+      <!--style="padding: 0">-->
+      <!--<div class="color-container" (click)="updateTheme('blue-theme')">-->
+      <!--<div class="colorDiv color-blue">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row p-2" style="margin:0">-->
+      <!--<div class="col-sm hover-effect" data-toggle="tooltip" data-placement="bottom" title="Red Theme"-->
+      <!--style="padding: 0">-->
+      <!--<div class="color-container">-->
+      <!--<div class="colorDiv color-red" (click)="updateTheme('red-theme')">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-sm hover-effect" data-toggle="tooltip" data-placement="bottom" title="Violet Theme"-->
+      <!--style="padding: 0">-->
+      <!--<div class="color-container">-->
+      <!--<div class="colorDiv color-violet" (click)="updateTheme('violet-theme')">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
       <!--</li>-->
       <!--<li class="nav-item dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" dropdown>-->
-        <!--<a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light">-->
-          <!--<i class="fa fa-globe"> </i><span class="caret"></span></a>-->
-        <!--<div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
-          <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('en')">-->
-            <!--<i class="fa fa-flag-o mr-2"></i>-->
-            <!--English (en)</a>-->
-          <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('fr')">-->
-            <!--<i class="fa fa-flag-o mr-2"></i>-->
-            <!--French (fr)</a>-->
-          <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('fa')">-->
-            <!--<i class="fa fa-flag-o mr-2"></i>-->
-            <!--Persian (fa)</a>-->
-          <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('ja')">-->
-            <!--<i class="fa fa-flag-o mr-2"></i>-->
-            <!--Japanese (ja)</a>-->
-          <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('hin')">-->
-            <!--<i class="fa fa-flag-o mr-2"></i>-->
-            <!--Hindi (hin)</a>-->
-        <!--</div>-->
+      <!--<a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light">-->
+      <!--<i class="fa fa-globe"> </i><span class="caret"></span></a>-->
+      <!--<div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
+      <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('en')">-->
+      <!--<i class="fa fa-flag-o mr-2"></i>-->
+      <!--English (en)</a>-->
+      <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('fr')">-->
+      <!--<i class="fa fa-flag-o mr-2"></i>-->
+      <!--French (fr)</a>-->
+      <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('fa')">-->
+      <!--<i class="fa fa-flag-o mr-2"></i>-->
+      <!--Persian (fa)</a>-->
+      <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('ja')">-->
+      <!--<i class="fa fa-flag-o mr-2"></i>-->
+      <!--Japanese (ja)</a>-->
+      <!--<a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('hin')">-->
+      <!--<i class="fa fa-flag-o mr-2"></i>-->
+      <!--Hindi (hin)</a>-->
+      <!--</div>-->
       <!--</li>-->
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="!authService.isLoggedIn()">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+          *ngIf="!authService.isLoggedIn()">
         <a class="nav-link" [routerLink]="[ '/login' ]">
           <i class="fa fa-sign-in mr-1"></i> {{this.translate.data["SIGNIN"] | translate}}</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="authService.isLoggedIn()">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+          *ngIf="authService.isLoggedIn()">
         <a class="nav-link" (click)="logout()">
           <i class="fa fa-sign-in mr-1"></i>{{this.translate.data["LOGOUT"] | translate}}</a>
       </li>
       <!--<li class="nav-item">-->
-        <!--<a href="javascript:;;" class="nav-link">Angular v-{{angularVersion.full}}</a>-->
+      <!--<a href="javascript:;;" class="nav-link">Angular v-{{angularVersion.full}}</a>-->
       <!--</li>-->
     </ul>
   </div>

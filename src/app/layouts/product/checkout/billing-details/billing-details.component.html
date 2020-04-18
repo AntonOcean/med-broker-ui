@@ -6,7 +6,7 @@
         <div class="col-md-6 mb-3">
           <label for="firstName">Имя</label>
           <input type="text" class="form-control" id="firstName" [(ngModel)]="userDetail.firstName" name="firstName"
-            required>
+                 required>
           <div class="invalid-feedback">
             Введите имя.
           </div>
@@ -14,7 +14,7 @@
         <div class="col-md-6 mb-3">
           <label for="lastName">Фамилия</label>
           <input type="text" class="form-control" id="lastName" [(ngModel)]="userDetail.lastName" name="lastName"
-            required>
+                 required>
           <div class="invalid-feedback">
             Введите фамилию
           </div>
@@ -25,7 +25,8 @@
         <label for="email">Почта
           <span class="text-muted">(Доп)</span>
         </label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="userDetails.emailId" name="email" [disabled]="true">
+        <input type="email" class="form-control" id="email" [(ngModel)]="userDetails.emailId" name="email"
+               [disabled]="true">
         <div class="invalid-feedback">
           Введите адрес почты.
         </div>
@@ -34,7 +35,7 @@
       <div class="mb-3">
         <label for="address">Адрес Регистрации</label>
         <input type="text" class="form-control" id="address" placeholder="" [(ngModel)]="userDetail.address1"
-          name="address1" required>
+               name="address1" required>
         <div class="invalid-feedback">
           Введите действительный адрес.
         </div>
@@ -45,13 +46,14 @@
           <span class="text-muted">(Доп)</span>
         </label>
         <input type="text" class="form-control" id="address2" placeholder="" [(ngModel)]="userDetail.address2"
-          name="address2">
+               name="address2">
       </div>
 
       <div class="row">
         <div class="col-md-5 mb-3">
           <label for="country">Город</label>
-          <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.country" name="country">
+          <select class="custom-select d-block w-100" id="country" required [(ngModel)]="userDetail.country"
+                  name="country">
             <option value="">...</option>
             <option>Москва</option>
           </select>
@@ -72,7 +74,7 @@
         <div class="col-md-3 mb-3">
           <label for="zip">Почтовый индекс</label>
           <input type="text" class="form-control" id="zip" placeholder="" [(ngModel)]="userDetail.zip" name="zip"
-            required>
+                 required>
           <div class="invalid-feedback">
             Введите почтовый индекс.
           </div>

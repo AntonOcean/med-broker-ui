@@ -1,24 +1,25 @@
 <div class="container">
-    <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of checkoutProducts">
-            <div>
-                <img [src]="product.productImageUrl" [alt]="product.productName" width="150" height="100">
-            </div>
-            <div style="padding: 10px">
-                <h6 class=" my-0 ">{{product.productName}}</h6>
-                <p>Поставщик : {{product.productSeller}}</p>
-            </div>
-            <span class="text-muted ">{{product.productPrice}} ₽</span>
-        </li>
-        <hr>
-        <li class="list-group-item d-flex justify-content-between ">
-            <span>Сумма (руб)</span>
-            <strong>{{totalPrice}} ₽</strong>
-        </li>
+  <ul class="list-group mb-3">
+    <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of checkoutProducts">
+      <div>
+        <img [src]="product.productImageUrl" [alt]="product.productName" width="150" height="100">
+      </div>
+      <div style="padding: 10px">
+        <h6 class=" my-0 ">{{product.productName}}</h6>
+        <p>Поставщик : {{product.productSeller}}</p>
+      </div>
+      <span class="text-muted ">{{product.productPrice}} ₽</span>
+    </li>
+    <hr>
+    <li class="list-group-item d-flex justify-content-between ">
+      <span>Сумма (руб)</span>
+      <strong>{{totalPrice}} ₽</strong>
+    </li>
 
-    </ul>
-    <div class="float-right">
-        <a class="btn btn-success " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['billing-details']}}]" routerLinkActive="active">Далее</a>
-    </div>
+  </ul>
+  <div class="float-right">
+    <a class="btn btn-success " [routerLink]="['/checkouts', {outlets: {'checkOutlet': ['billing-details']}}]"
+       routerLinkActive="active">Далее</a>
+  </div>
 
 </div>

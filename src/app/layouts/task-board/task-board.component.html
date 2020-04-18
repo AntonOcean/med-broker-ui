@@ -24,8 +24,9 @@
             <span class="badge badge-secondary">{{todo.length}}</span>
           </div>
         </div>
-        <div cdkDropList id="todoList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="['inProgressList']" class="example-list"
-          (cdkDropListDropped)="drop($event)">
+        <div cdkDropList id="todoList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="['inProgressList']"
+             class="example-list"
+             (cdkDropListDropped)="drop($event)">
           <div class="card border shadow example-box" *ngFor="let item of todo" cdkDrag (click)="onSelect(item)">
             <div class="card-body">
               <div class="d-flex flex-row bd-highlight3">
@@ -37,9 +38,11 @@
                 </div>
               </div>
               <!-- <p class="card-text">{{cards.description}}.</p> -->
-              <p style="font-size: 12px">Created: <span style="color: gray">{{item.createdOn | momentTimeAgo}}</span></p>
-              <span style="color: gray" *ngFor="let assignie of item.assignies"><img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png"
-                  [alt]="assignie.userId" width="40px" height="40px"></span>
+              <p style="font-size: 12px">Created: <span style="color: gray">{{item.createdOn | momentTimeAgo}}</span>
+              </p>
+              <span style="color: gray" *ngFor="let assignie of item.assignies"><img
+                src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png"
+                [alt]="assignie.userId" width="40px" height="40px"></span>
             </div>
           </div>
         </div>
@@ -55,8 +58,9 @@
           </div>
         </div>
 
-        <div cdkDropList id="inProgressList" [cdkDropListData]="inProgress" [cdkDropListConnectedTo]="['todoList', 'completedList']"
-          class="example-list" (cdkDropListDropped)="drop($event)">
+        <div cdkDropList id="inProgressList" [cdkDropListData]="inProgress"
+             [cdkDropListConnectedTo]="['todoList', 'completedList']"
+             class="example-list" (cdkDropListDropped)="drop($event)">
           <div class="card border shadow example-box" *ngFor="let item of inProgress" (click)="onSelect(item)" cdkDrag>
             <div class="card-body">
               <div class="d-flex flex-row bd-highlight3">
@@ -69,9 +73,10 @@
               </div>
               <!-- <p class="card-text">{{cards.description}}.</p> -->
               <p style="font-size: 12px">Created: <span style="color: gray">{{item.createdOn
-                  | momentTimeAgo}}</span></p>
-              <span style="color: gray" *ngFor="let assignie of item.assignies"><img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png"
-                  [alt]="assignie.userId" width="40px" height="40px"></span>
+                | momentTimeAgo}}</span></p>
+              <span style="color: gray" *ngFor="let assignie of item.assignies"><img
+                src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png"
+                [alt]="assignie.userId" width="40px" height="40px"></span>
             </div>
           </div>
         </div>
@@ -88,7 +93,7 @@
         </div>
 
         <div cdkDropList id="completedList" [cdkDropListData]="completed" [cdkDropListConnectedTo]="['inProgressList']"
-          class="example-list" (cdkDropListDropped)="drop($event)">
+             class="example-list" (cdkDropListDropped)="drop($event)">
           <div class="card border shadow example-box" *ngFor="let item of completed" (click)="onSelect(item)" cdkDrag>
             <div class="card-body">
               <div class="d-flex flex-row bd-highlight3">
@@ -101,9 +106,10 @@
               </div>
               <!-- <p class="card-text">{{cards.description}}.</p> -->
               <p style="font-size: 12px">Created: <span style="color: gray">{{item.createdOn
-                  | momentTimeAgo}}</span></p>
-              <span style="color: gray" *ngFor="let assignie of item.assignies"><img src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png"
-                  [alt]="assignie.userId" width="40px" height="40px"></span>
+                | momentTimeAgo}}</span></p>
+              <span style="color: gray" *ngFor="let assignie of item.assignies"><img
+                src="https://www.shareicon.net/download/2015/09/18/103157_man_512x512.png"
+                [alt]="assignie.userId" width="40px" height="40px"></span>
             </div>
           </div>
         </div>

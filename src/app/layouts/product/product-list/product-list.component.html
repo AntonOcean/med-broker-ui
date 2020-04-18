@@ -1,13 +1,13 @@
 <br>
 <div class="container">
   <!--<div class="row" *ngIf="authService.isAdmin()">-->
-    <!--<div class="col-sm">-->
-      <!--<div class="float-right">-->
-        <!--<button type="button" class="btn btn-primary waves-light" data-toggle="modal" data-target="#exampleModalLong">-->
-          <!--Добавить анализ-->
-        <!--</button>-->
-      <!--</div>-->
-    <!--</div>-->
+  <!--<div class="col-sm">-->
+  <!--<div class="float-right">-->
+  <!--<button type="button" class="btn btn-primary waves-light" data-toggle="modal" data-target="#exampleModalLong">-->
+  <!--Добавить анализ-->
+  <!--</button>-->
+  <!--</div>-->
+  <!--</div>-->
   <!--</div>-->
   <div class="row">
     <div class="col-md-3">
@@ -18,9 +18,9 @@
         </select>
       </div>
       <!--<ul class="list-group">-->
-        <!--<li class="list-group-item">Cras justo odio</li>-->
-        <!--<li class="list-group-item">Dapibus ac facilisis in</li>-->
-        <!--<li class="list-group-item">Morbi leo risus</li>-->
+      <!--<li class="list-group-item">Cras justo odio</li>-->
+      <!--<li class="list-group-item">Dapibus ac facilisis in</li>-->
+      <!--<li class="list-group-item">Morbi leo risus</li>-->
       <!--</ul>-->
     </div>
     <div class="col-md-9">
@@ -29,7 +29,8 @@
         <app-card-loader [loop]="3" [height]="800" *ngIf="loading"></app-card-loader>
         <div class="row" *ngIf="!loading">
           <!-- List of Products -->
-          <div class="col-sm-4 mb-2" *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
+          <div class="col-sm-4 mb-2"
+               *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
             <div class="item">
               <div class=" mb-r">
                 <!--Card-->
@@ -63,15 +64,17 @@
                     <div class="card-footer">
                       <span class="left">{{ product.productPrice }} ₽</span>
                       <span class="right">
-                        <a placement="top" mdbTooltip="Добавить в избранное" container="body" (click)="addFavourite(product)">
+                        <a placement="top" mdbTooltip="Добавить в избранное" container="body"
+                           (click)="addFavourite(product)">
                           <i class="fa fa-heart"></i>
                         </a>
-                        <a placement="top" mdbTooltip="Добавить в корзину" container="body" (click)="addToCart(product)">
+                        <a placement="top" mdbTooltip="Добавить в корзину" container="body"
+                           (click)="addToCart(product)">
                           <i class="fa fa-shopping-cart"></i>
                         </a>
                         <!--<a placement="top" mdbTooltip="Удалить" container="body" *ngIf="authService.isAdmin()"-->
-                          <!--(click)="removeProduct(product.$key)">-->
-                          <!--<i class="fa fa-trash"></i>-->
+                        <!--(click)="removeProduct(product.$key)">-->
+                        <!--<i class="fa fa-trash"></i>-->
                         <!--</a>-->
                       </span>
                     </div>
@@ -88,7 +91,8 @@
         </div>
         <!-- Pagination -->
         <div class="text-center mt-3">
-          <pagination-controls (pageChange)="page = $event" [nextLabel]="'Вперед'" [previousLabel]="'Назад'"></pagination-controls>
+          <pagination-controls (pageChange)="page = $event" [nextLabel]="'Вперед'"
+                               [previousLabel]="'Назад'"></pagination-controls>
         </div>
       </div>
       <!--/.Card-->

@@ -44,7 +44,8 @@
                   <div class="card-footer">
                     <span class="left">{{ product.productPrice }} ₽</span>
                     <span class="right">
-                      <a placement="top" mdbTooltip="Просмотр" container="body" [routerLink]="['/products/product', product.$key]">
+                      <a placement="top" mdbTooltip="Просмотр" container="body"
+                         [routerLink]="['/products/product', product.$key]">
                         <i class="fa fa-eye"></i>
                       </a>
                       <a placement="top" mdbTooltip="Убрать" container="body" (click)="removeCartProduct(product)">
