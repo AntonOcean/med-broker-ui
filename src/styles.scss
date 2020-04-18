@@ -18,3 +18,8 @@ a {
   text-decoration: none;
 }
 
+#toast-container {
+  position: fixed;
+  z-index: 999999;
+  margin-top: 50px;
+}
