@@ -1,6 +1,6 @@
 import {ToastrService} from '../../shared/services/toastr.service';
 import {EmailValidator, NgForm} from '@angular/forms';
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../shared/services/user.service';
 import {AuthService} from '../../shared/services/auth.service';
@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private toastService: ToastrService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ngZone: NgZone
   ) {
     this.createUser = new User();
   }
@@ -52,13 +53,10 @@ export class LoginComponent implements OnInit {
         };
 
         this.userService.createUser(user);
-
         this.toastService.success('Регистрация', 'Вы зарегистрированы!');
-
-        setTimeout((router: Router) => {
-          $('#createUserForm').modal('hide');
-          this.router.navigate(['/']);
-        }, 800);
+        $('#createUserForm').modal('hide');
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+        this.router.navigate([returnUrl || '/']);
       })
       .catch((err) => {
         this.errorInUserCreate = true;
@@ -72,14 +70,8 @@ export class LoginComponent implements OnInit {
       .signInRegular(userForm.value.emailId, userForm.value.loginPassword)
       .then((res) => {
         this.toastService.success('Вход выполнен', '');
-
         const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-
-        setTimeout((router: Router) => {
-          this.router.navigate([returnUrl || '/']);
-        }, 800);
-
-        this.router.navigate(['/']);
+        this.router.navigate([returnUrl || '/']);
       })
       .catch((err) => {
         this.toastService.error('Вход не выполнен', 'Введен неверный логин\\пароль');
@@ -94,9 +86,10 @@ export class LoginComponent implements OnInit {
           this.userService.createUser(res.additionalUserInfo.profile);
         }
         this.toastService.success('Вход выполнен', '');
-        setTimeout((router: Router) => {
-          this.router.navigate(['/']);
-        }, 800);
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+        this.ngZone.run(() => {
+          this.router.navigate([returnUrl || '/']);
+        });
       })
       .catch((err) => {
         this.toastService.error('Ошибка', 'Попробуйте позже');

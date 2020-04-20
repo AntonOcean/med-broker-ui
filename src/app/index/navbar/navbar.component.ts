@@ -4,6 +4,7 @@ import {AuthService} from '../../shared/services/auth.service';
 import {ProductService} from '../../shared/services/product.service';
 import {TranslateService} from '../../shared/services/translate.service';
 import {ThemeService} from 'src/app/shared/services/theme.service';
+import {ToastrService} from '../../shared/services/toastr.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     public productService: ProductService,
     public translate: TranslateService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private toastService: ToastrService,
   ) {
     // console.log(translate.data);
   }
@@ -30,6 +32,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.toastService.warning('Вы вышли', '');
     this.router.navigate(['/']);
   }
 
