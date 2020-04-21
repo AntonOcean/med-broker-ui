@@ -30,7 +30,7 @@ export class ProductService {
   }
 
   getProducts(): Observable<Product[]> {
-      return this.http.get<Product[]>('/api/medset');
+    return this.http.get<Product[]>('/api/medset');
   }
 
   createProduct(data: Product) {
@@ -156,6 +156,12 @@ export class ProductService {
   // returning LocalCarts Product Count
   calculateLocalCartProdCounts() {
     this.navbarCartCount = this.getLocalCartProducts().length;
+  }
+
+  // Removing carts from local
+  removeAllLocalCartProduct() {
+    localStorage.setItem('avct_item', JSON.stringify([]));
+    this.calculateLocalCartProdCounts();
   }
 }
 

@@ -3,6 +3,8 @@ import {ProductService} from '../../../../shared/services/product.service';
 import {Component, OnInit} from '@angular/core';
 import * as Jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import {ToastrService} from '../../../../shared/services/toastr.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -16,7 +18,11 @@ export class ResultComponent implements OnInit {
   totalPrice = 0;
   tax = 6.4;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    private toastService: ToastrService,
+    private router: Router
+    ) {
     /* Hiding Billing Tab Element */
     document.getElementById('productsTab').style.display = 'none';
     // document.getElementById('shippingTab').style.display = 'none';
@@ -52,5 +58,11 @@ export class ResultComponent implements OnInit {
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
       pdf.save('med-broker-receipt.pdf'); // Generated PDF
     });
+  }
+
+  billing() {
+    this.toastService.success('Поздравляем!', 'Вы успешно оформили заказ');
+    this.productService.removeAllLocalCartProduct();
+    this.router.navigate(['/']);
   }
 }
