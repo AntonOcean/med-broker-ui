@@ -11,4 +11,5 @@ export class Product {
   ratings: number;
   favourite: boolean;
   productSeller: string;
+  productServs: string[];
 }

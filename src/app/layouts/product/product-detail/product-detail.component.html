@@ -50,6 +50,10 @@
             <th scope="row">Свободное место на</th>
             <td>{{product.productAdded * 1000 | date: 'dd MMMM yyyy, EEEE': '': 'ru'}}</td>
           </tr>
+          <tr>
+            <th scope="row">Состав</th>
+            <td><p *ngFor="let entity of product.productServs">{{entity}}</p></td>
+          </tr>
           </tbody>
         </table>
       </div>
