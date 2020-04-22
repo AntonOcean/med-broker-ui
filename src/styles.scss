@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/theme/colors";
-@import "./assets/theme/functions";
-
+@import "./search.css";
 
 router-outlet ~ * {
   position: absolute;
