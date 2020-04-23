@@ -5,7 +5,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import {FormBuilder, FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {OwlModule} from 'ngx-owl-carousel';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -44,7 +44,8 @@ import {CdkTreeModule} from '@angular/cdk/tree';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBWCStFUeFFi5SlkQUve3_c8i6Y-LbQAyo'
     }),
-    NgxContentLoadingModule
+    NgxContentLoadingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     NoProductsFoundComponent,
@@ -76,7 +77,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
     CardLoaderComponent,
     CdkTableModule,
     CdkTreeModule,
-    DragDropModule, ScrollingModule
+    DragDropModule, ScrollingModule, ReactiveFormsModule
   ],
   providers: [AuthService, AuthGuard, AdminGaurd, ProductService, UserService, FormBuilder]
 })

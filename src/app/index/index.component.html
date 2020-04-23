@@ -20,17 +20,18 @@
 
             <div class="search__wrapper">
               <h1 class="title title--white title--small search__ttl"><span>Простой поиск анализов</span></h1>
-              <form action="analizy-i-tseny" method="GET"
-                    onsubmit="ga('send', 'event', 'indexPage', 'search', $(this).find('.js-search-input').val())">
+              <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
                 <div class="search__all">
                   <input
+                    [(ngModel)]="searchTerm"
                     class="search__input js-search-input"
                     type="text"
-                    name="filter[term]"
-                    value=""
+                    name="term"
+                    value="{{ searchTerm }}"
                     placeholder="Введите название анализа"
                     autocomplete="off"
                     maxlength="100"
+                    formControlName="term"
                   >
                   <button class="search__btn" type="submit" name="button"></button>
                 </div>
@@ -41,7 +42,7 @@
               </ul>
 
               <div class="search__txt hide-on-mobile">
-                <span>Например, </span> <a href="javascript:;" class="js-add-to-search">клинический анализ крови</a>
+                <span>Например, </span> <a href="javascript:;" [routerLink]="[ 'products/all-products' ]" [queryParams]="{q:'диабет'}" class="js-add-to-search">диабет</a>
               </div>
             </div>
 
@@ -62,17 +63,18 @@
 
             <div class="search__wrapper">
               <h1 class="title title--white title--small search__ttl"><span>Простой поиск анализов</span></h1>
-              <form action="analizy-i-tseny" method="GET"
-                    onsubmit="ga('send', 'event', 'indexPage', 'search', $(this).find('.js-search-input').val())">
+              <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
                 <div class="search__all">
                   <input
+                    [(ngModel)]="searchTerm"
                     class="search__input js-search-input"
                     type="text"
-                    name="filter[term]"
-                    value=""
+                    name="term"
+                    value="{{ searchTerm }}"
                     placeholder="Введите название анализа"
                     autocomplete="off"
                     maxlength="100"
+                    formControlName="term"
                   >
                   <button class="search__btn" type="submit" name="button"></button>
                 </div>
@@ -83,7 +85,7 @@
               </ul>
 
               <div class="search__txt hide-on-mobile">
-                <span>Например, </span> <a href="javascript:;" class="js-add-to-search">клинический анализ крови</a>
+                <span>Например, </span> <a href="javascript:;" [routerLink]="[ 'products/all-products' ]" [queryParams]="{q:'диабет'}" class="js-add-to-search">диабет</a>
               </div>
             </div>
 
@@ -104,17 +106,18 @@
 
             <div class="search__wrapper">
               <h1 class="title title--white title--small search__ttl"><span>Простой поиск анализов</span></h1>
-              <form action="analizy-i-tseny" method="GET"
-                    onsubmit="ga('send', 'event', 'indexPage', 'search', $(this).find('.js-search-input').val())">
+              <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
                 <div class="search__all">
                   <input
+                    [(ngModel)]="searchTerm"
                     class="search__input js-search-input"
                     type="text"
-                    name="filter[term]"
-                    value=""
+                    name="term"
+                    value="{{ searchTerm }}"
                     placeholder="Введите название анализа"
                     autocomplete="off"
                     maxlength="100"
+                    formControlName="term"
                   >
                   <button class="search__btn" type="submit" name="button"></button>
                 </div>
@@ -125,7 +128,7 @@
               </ul>
 
               <div class="search__txt hide-on-mobile">
-                <span>Например, </span> <a href="javascript:;" class="js-add-to-search">клинический анализ крови</a>
+                <span>Например, </span> <a href="javascript:;" [routerLink]="[ 'products/all-products' ]" [queryParams]="{q:'диабет'}" class="js-add-to-search">диабет</a>
               </div>
             </div>
 
