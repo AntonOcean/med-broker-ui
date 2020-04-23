@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   getProductDetail(id: string) {
-    this.productService.getProductByIdNew(id).subscribe(
+    this.productService.getProductById(id).subscribe(
       product => {
         this.product = product;
       },

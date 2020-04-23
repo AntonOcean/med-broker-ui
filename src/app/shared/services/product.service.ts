@@ -41,11 +41,6 @@ export class ProductService {
   }
 
   getProductById(key: string) {
-    this.product = this.db.object('products/' + key);
-    return this.product;
-  }
-
-  getProductByIdNew(key: string) {
     return this.http.get<Product>(`/api/medset/${key}`);
   }
 
