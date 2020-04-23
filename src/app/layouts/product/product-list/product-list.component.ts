@@ -3,6 +3,7 @@ import {Product} from '../../../shared/models/product';
 import {AuthService} from '../../../shared/services/auth.service';
 import {ProductService} from '../../../shared/services/product.service';
 import {ToastrService} from 'src/app/shared/services/toastr.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -16,24 +17,29 @@ export class ProductListComponent implements OnInit {
   brands = new Set(['Все']);
 
   selectedBrand: 'Все';
-
+  searchQ = '';
   page = 1;
 
   constructor(
     public authService: AuthService,
     private productService: ProductService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    this.getAllProducts();
+    this.route.queryParamMap.subscribe( paramMap => {
+      this.searchQ = paramMap.get('q');
+      this.getAllProducts(this.searchQ);
+    });
   }
 
-  getAllProducts() {
+  getAllProducts(query) {
     // this.spinnerService.show();
     this.loading = true;
-    this.productService.getProducts().subscribe(
+
+    this.productService.getProducts(query).subscribe(
       products => {
         products.forEach(product => {
           this.productList.push(product);

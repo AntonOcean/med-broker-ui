@@ -29,7 +29,10 @@ export class ProductService {
     this.calculateLocalCartProdCounts();
   }
 
-  getProducts(): Observable<Product[]> {
+  getProducts(query = ''): Observable<Product[]> {
+    if (query) {
+      return this.http.get<Product[]>(`/api/medset?q=${query}`);
+    }
     return this.http.get<Product[]>('/api/medset');
   }
 
