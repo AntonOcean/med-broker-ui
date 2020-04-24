@@ -6,7 +6,7 @@
  border-radius:0 4rem 4rem 0;
  background-color:#fff;
  border:0;
-   background-image:url("https://kdl.ru/templates/src/sprites/svg/search_icon.svg");
+   background-image:url("assets/icons/search_icon.png");
  background-repeat:no-repeat;
  background-position:40%
 }
@@ -138,7 +138,7 @@
  display:none
 }
 .search__result--title._popular {
- color:#be216a
+ color:#23426e
 }
 .search__result--item {
  display:-webkit-flex;
@@ -221,8 +221,8 @@
  right:-0.8em;
  width:2.4em;
  height:1.2em;
- border-left:.4em solid #403360;
- border-bottom:.4em solid #403360;
+ border-left:.4em solid #23426e;
+ border-bottom:.4em solid #23426e;
  transform:rotate(-45deg);
  font-size:.5em;
  opacity:0;
@@ -251,7 +251,7 @@
  padding-left:1rem
 }
 .desktop .search__result--all:hover {
- color:#be216a
+ color:#23426e
 }
 
 
@@ -447,8 +447,8 @@
  background-repeat:no-repeat;
  background-position:40%;
   background-image:url("https://kdl.ru/templates/src/sprites/svg/search_icon_w.svg");
- background-color:#40335f;
- border-color:#40335f;
+ background-color:#23426e;
+ border-color:#23426e;
  color:#fff;
  box-shadow:none
 }
@@ -514,7 +514,7 @@
 }
 .tablet .a-search__filters-header_theme_purple,
 .mobile .a-search__filters-header_theme_purple {
- background-color:#403360;
+ background-color:#23426e;
  color:#fff
 }
 .mobile .a-search__filters-header {
@@ -860,7 +860,7 @@
  padding-top:2.2rem;
  width:100%;
  height:6rem;
- background-color:#40335f;
+ background-color:#23426e;
  text-align:center;
  font-size:1.8rem;
  color:#fff
@@ -943,8 +943,8 @@
  user-select:none
 }
 .a-filter__check:checked+.a-filter__label {
- background-color:#be216a;
- border-color:#be216a;
+ background-color:#23426e;
+ border-color:#23426e;
  color:#fff!important
 }
 .a-filter__label {
@@ -1011,7 +1011,7 @@
  white-space:nowrap
 }
 .a-filter__drop._state_selected {
- color:#be216a
+ color:#23426e
 }
 .a-filter__drop._state_selected::after {
  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvgid=%22arrow-down-pink%22data-name=%22843cf680-5eca-43e1-a985-d16a503768d5%22xmlns=%22http://www.w3.org/2000/svg%22viewBox=%220012.916.57%22%3E%3Ctitle%3Earrow-down%3C/title%3E%3Cpolygonpoints=%221.050.340.71000.710.381.081.050.34%22fill=%22%23be216a%22/%3E%3Cpolygonpoints=%226.465.96.136.276.466.576.796.276.465.9%22fill=%22%23be216a%22/%3E%3Cpolygonpoints=%2212.541.0812.910.7512.240.0111.870.3412.541.08%22fill=%22%23be216a%22/%3E%3Cpolygonpoints=%220.381.086.146.276.815.531.050.340.381.08%22fill=%22%23be216a%22/%3E%3Crectx=%225.46%22y=%222.81%22width=%227.74%22height=%220.99%22transform=%22translate(0.197.1)rotate(-42.07)%22fill=%22%23be216a%22/%3E%3C/svg%3E")
@@ -1622,11 +1622,11 @@
  user-select:none
 }
 .a-checkbox__input:checked+.a-checkbox__label {
- color:#be216a
+ color:#23426e
 }
 .a-checkbox__input:checked+.a-checkbox__label::before {
- border-color:#be216a;
- background-color:#be216a
+ border-color:#23426e;
+ background-color:#23426e
 }
 .a-checkbox__input:checked+.a-checkbox__label::after {
  opacity:1;
@@ -1635,7 +1635,7 @@
 }
 .tablet .a-checkbox__input:checked+.a-checkbox__label::after,
 .mobile .a-checkbox__input:checked+.a-checkbox__label::after {
- border-color:#be216a
+ border-color:#23426e
 }
 .a-checkbox__input:checked+.a-checkbox__label--cbh {
  color:#9b9b9b

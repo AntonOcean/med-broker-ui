@@ -40,15 +40,15 @@
           <!--Card content-->
           <div class="card-body text-center no-padding">
             <!--Category & Title-->
-            <a href="" class="text-muted">
+            <a [routerLink]="['/products/product', product.$key]" class="text-muted">
               <h5>{{ product.productCategory }}</h5>
-            </a>
+
             <h5 class="card-title">
               <strong>
-                <a [routerLink]="['/products/product', product.$key]">{{ product.productName }}</a>
+                {{ product.productName }}
               </strong>
             </h5>
-
+            </a>
             <!--Description-->
             <p class="card-text">{{ product.productDescription }}
             </p>
@@ -57,9 +57,9 @@
             <div class="card-footer">
               <span class="left">{{ product.productPrice }} ₽</span>
               <span class="right">
-                <a placement="top" mdbTooltip="Добавить в избранное" container="body" (click)="addFavourite(product)">
-                  <i class="fa fa-heart"></i>
-                </a>
+<!--                <a placement="top" mdbTooltip="Добавить в избранное" container="body" (click)="addFavourite(product)">-->
+<!--                  <i class="fa fa-heart"></i>-->
+<!--                </a>-->
                 <a placement="top" mdbTooltip="Добавить в корзину" container="body" (click)="addToCart(product)">
                   <i class="fa fa-shopping-cart"></i>
                 </a>

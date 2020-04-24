@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
 
   <!-- Navbar brand -->
-  <a class="navbar-brand" href="javascript:;;" [routerLink]="[ '/' ]">Med Broker</a>
+  <a class="navbar-brand" href="javascript:;;" [routerLink]="[ '/' ]"><strong>Med Broker</strong></a>
 
   <!-- Collapse button -->
   <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
@@ -17,18 +17,18 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" href="javascript:;;" [routerLink]="[ '/' ]">{{this.translate.data["HOME"] | translate}}
+        <a class="nav-link" href="javascript:;;" [routerLink]="[ '/' ]"><strong>{{this.translate.data["HOME"] | translate}}</strong>
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/products/all-products' ]">{{
-          this.translate.data["PRODUCTS"] | translate}}</a>
+        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/products/all-products' ]"><strong>{{
+          this.translate.data["PRODUCTS"] | translate}}</strong></a>
       </li>
       <li class="nav-item" *ngIf="authService.isAdmin()" [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" href="http://95.163.248.36/">{{
-          this.translate.data["TASKBOARD"] | translate}}</a>
+        <a class="nav-link" href="http://95.163.248.36/"><strong>{{
+          this.translate.data["TASKBOARD"] | translate}}</strong></a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
@@ -41,7 +41,7 @@
         <div>
           <a class="nav-link" href="javascript:;;" [routerLink]="['/products/favourite-products']">
             <i class="fa fa-heart" [routerLinkActive]="['fa-inverse']" [routerLinkActiveOptions]="{exact:true}">
-              <span class="mt-2"> {{productService.navbarFavProdCount}}</span>
+              <span class="mt-2"> РЕКОМЕНДОВАНО ({{productService.navbarFavProdCount}})</span>
             </i>
           </a>
         </div>
@@ -51,14 +51,14 @@
         <div>
           <a class="nav-link" href="javascript:;;" [routerLink]="['/products/cart-items']">
             <i class="fa fa-shopping-cart" [routerLinkActive]="['fa-inverse']" [routerLinkActiveOptions]="{exact:true}">
-              <span class="mt-2"> {{productService.navbarCartCount}}</span>
+              <span class="mt-2"> КОРЗИНА ({{productService.navbarCartCount}})</span>
             </i>
           </a>
         </div>
       </li>
       <li class="nav-item" *ngIf="authService.isLoggedIn()">
         <a class="nav-link" [routerLink]="['/users']">
-          <i class="fa fa-user mr-1"></i>{{this.translate.data["MYACCOUNT"] | translate}}</a>
+          <i class="fa fa-user mr-1"></i><strong>{{this.translate.data["MYACCOUNT"] | translate}}</strong></a>
       </li>
 
       <!--<li class="nav-item dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" dropdown>-->
@@ -123,12 +123,12 @@
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
           *ngIf="!authService.isLoggedIn()">
         <a class="nav-link" [routerLink]="[ '/login' ]">
-          <i class="fa fa-sign-in mr-1"></i> {{this.translate.data["SIGNIN"] | translate}}</a>
+          <i class="fa fa-sign-in mr-1"></i> <strong>{{this.translate.data["SIGNIN"] | translate}}</strong></a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
           *ngIf="authService.isLoggedIn()">
         <a class="nav-link" (click)="logout()">
-          <i class="fa fa-sign-in mr-1"></i>{{this.translate.data["LOGOUT"] | translate}}</a>
+          <i class="fa fa-sign-in mr-1"></i><strong>{{this.translate.data["LOGOUT"] | translate}}</strong></a>
       </li>
       <!--<li class="nav-item">-->
       <!--<a href="javascript:;;" class="nav-link">Angular v-{{angularVersion.full}}</a>-->

@@ -12,8 +12,8 @@ export class FavouriteProductsComponent implements OnInit {
   showDataNotFound = true;
 
   // Not Found Message
-  messageTitle = 'У вас еще нету избранных анализов';
-  messageDescription = 'Вы можете их добавить, нажав на "сердечко"';
+  messageTitle = 'У вас еще нет рекомендованных анализов';
+  messageDescription = 'Вы можете заказать анализ и получить рекомендацию';
 
   constructor(private productService: ProductService) {
   }

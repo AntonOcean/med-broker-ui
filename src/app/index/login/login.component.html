@@ -19,10 +19,10 @@
       </div>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-primary waves-light mr-5" id="loginButton" mdbRippleRadius>Вход</button>
+        <button type="submit" class="btn btn-primary waves-light mr-5" id="loginButton" style="background: #23426e; border-color: #23426e;" mdbRippleRadius>Вход</button>
 
         <button type="button" class="btn waves-light" (click)="signInWithGoogle()"
-                style="background-color: #dd4b39; color: white">
+                style="background-color: #74a4d2; color: white">
           <i class="fa fa-google" aria-hidden="true"></i>
           Вход через Google
         </button>
@@ -43,8 +43,8 @@
       <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
         <div class="modal-content">
 
-          <div class="modal-header light-blue darken-3 white-text">
-            <h4 class="title">
+          <div class="modal-header" style="background: #23426e">
+            <h4 class="title" style="color: white">
               <i class="fa fa-user-plus"></i> Регистрация</h4>
             <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
@@ -67,7 +67,7 @@
                      mdbInputValidate autocomplete="new-password">
             </div>
             <div class="text-center mt-2">
-              <button class="btn btn-info waves-light" id="signUpButton" mdbRippleRadius>Зарегистрироваться
+              <button class="btn btn-info waves-light" id="signUpButton" style="background: #23426e; border-color: #23426e;" mdbRippleRadius>Зарегистрироваться
                 <i class="fa fa-sign-in ml-1"></i>
               </button>
             </div>

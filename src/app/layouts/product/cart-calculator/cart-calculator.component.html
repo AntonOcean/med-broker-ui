@@ -1,6 +1,6 @@
 <h4 class="d-flex justify-content-between align-items-center mb-3">
   <span class="text-muted">Ваша корзина</span>
-  <span class="badge badge-primary badge-pill">{{products.length}}</span>
+  <span class="badge badge-primary badge-pill" style="background: #23426e;">{{products.length}}</span>
 </h4>
 <ul class="list-group mb-3">
   <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let product of products">
@@ -14,7 +14,7 @@
     <span>Сумма (руб)</span>
     <strong>{{totalValue}} ₽</strong>
   </li>
-  <a class="btn btn-primary mt-2 mb-2" [routerLink]="['/products/all-products']">Продолжить покупки</a>
-  <a class="btn btn-success" [routerLink]="['/checkouts']">Оплатить</a>
+  <a class="btn btn-primary mt-2 mb-2" [routerLink]="['/products/all-products']" style="border-color: #23426e; background: #ffffff; color: #23426e;">Продолжить покупки</a>
+  <a class="btn btn-success" [routerLink]="['/checkouts']" style="background: #23426e; border-color: #23426e;">Оплатить </a>
 
 </ul>

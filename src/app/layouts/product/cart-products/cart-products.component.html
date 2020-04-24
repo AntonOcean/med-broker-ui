@@ -27,15 +27,15 @@
                 <!--Card content-->
                 <div class="card-body text-center no-padding">
                   <!--Category & Title-->
-                  <a class="text-muted">
+                  <a [routerLink]="['/products/product', product.$key]" class="text-muted">
                     <h5>{{ product.productCategory }}</h5>
-                  </a>
+
                   <h5 class="card-title">
                     <strong>
-                      <a [routerLink]="['/products/product', product.$key]">{{ product.productName }}</a>
+                      {{ product.productName }}
                     </strong>
                   </h5>
-
+                  </a>
                   <!--Description-->
                   <p class="card-text">{{ product.productDescription }}
                   </p>

@@ -30,6 +30,8 @@ export class ProductListComponent implements OnInit {
   showDiseases = false;
   showReset = false;
 
+  private snapshot;
+
   constructor(
     public authService: AuthService,
     private productService: ProductService,
@@ -50,12 +52,12 @@ export class ProductListComponent implements OnInit {
 
     this.getAllCategories();
 
-    let snapshot;
     this.searchForm.valueChanges.pipe(
       debounceTime(800),
     )
       .subscribe((value) => {
-        if (value.searchQ && value.searchQ.trim() && !(snapshot && snapshot.searchQ && value.searchQ.trim() === snapshot.searchQ.trim())) {
+        if (value.searchQ && value.searchQ.trim() &&
+          !(this.snapshot && this.snapshot.searchQ && value.searchQ.trim() === this.snapshot.searchQ.trim())) {
           this.getAllProducts(value.searchQ.trim());
           this.showReset = true;
         }
@@ -63,7 +65,7 @@ export class ProductListComponent implements OnInit {
         if (value.searchQ && value.searchQ.trim() || this.selectedBrand.length) {
           this.showReset = true;
         }
-        snapshot = value;
+        this.snapshot = value;
       });
   }
 
@@ -125,9 +127,17 @@ export class ProductListComponent implements OnInit {
   }
 
   onSubmitSearch() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.searchForm.value);
-    this.productList = [];
+    const value = this.searchForm.value;
+    if (value.searchQ && value.searchQ.trim() &&
+      !(this.snapshot && this.snapshot.searchQ && value.searchQ.trim() === this.snapshot.searchQ.trim())) {
+      this.getAllProducts(value.searchQ.trim());
+      this.showReset = true;
+    }
+    this.selectedBrand = Object.entries(value).filter((item) => item[1] === true).map((item) => item[0]);
+    if (value.searchQ && value.searchQ.trim() || this.selectedBrand.length) {
+      this.showReset = true;
+    }
+    this.snapshot = value;
   }
 
   onReset() {

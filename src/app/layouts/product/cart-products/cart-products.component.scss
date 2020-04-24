@@ -111,6 +111,7 @@
     transition: 0.4s;
   }
 
-.card .card-body .card-title a{
-  color: var(--navBackground) !important;
+.card .card-body .card-title {
+  color: var(--productTitle) !important;
+  font-weight: bold;
 }

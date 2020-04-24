@@ -10,8 +10,8 @@
 }
 
 .red-theme {
-    --navBackground: #e91e63;
-    --productTitle: #e91e63;
+    --navBackground: #426ba4;
+    --productTitle: #426ba4;
 }
 
 .violet-theme {
@@ -24,6 +24,9 @@
 //--navBackground: var(--navBackground),
 //--productTitle: var(--productTitle)
 $variables: (
-    --navBackground: #e91e63,
-    --productTitle: #e91e63
+    --navBackground: #426ba4,
+    --productTitle: #23426e,
+    --alwaysButton: #426ba4,
+    --mainButton: #23426e,
+    --featureButton: #426ba4
 );
