@@ -13,27 +13,28 @@
 
 
     <div class="a-search content">
-      <form action="analizy-i-tseny" class="js-form" method="POST">
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearch()">
 
         <div class="a-search__main">
           <input
             class="a-search__main-input js-search-input"
             type="search"
             name="filter[term]"
-            value="{{ searchQ }}"
+            value=""
             placeholder="Поиск по анализам"
             autocomplete="off"
             maxlength="100"
+            formControlName="searchQ"
           >
           <ul class="search__result js-search-result _blured hide">
             <li class="js-empty"></li>
           </ul>
-          <div class="a-search__main-select-wr show-on-desktop">
-<!--            _state_active-->
+          <div class="a-search__main-select-wr show-on-desktop" (click)="showGroups = !showGroups">
             <div
               class="a-search__main-select show-on-desktop js-drop-trigger"
               data-drop-title="Анализы по разделам"
               data-state="groups"
+              [ngClass]="{'_state_active': showGroups}"
             >
               <span>Анализы по разделам</span>
             </div>
@@ -54,11 +55,13 @@
             </div>
 
             <div class="a-filter__drop-container">
-<!--              <div class="a-dropdown js-dropdown _state_active _state_diseases">-->
-<!--              <div class="a-dropdown js-dropdown _state_active _state_groups">-->
-              <div class="a-dropdown js-dropdown">
+              <!--              <div class="a-dropdown js-dropdown _state_active _state_diseases">-->
+              <!--              <div class="a-dropdown js-dropdown _state_active _state_groups">-->
+              <div class="a-dropdown js-dropdown"
+                   [ngClass]="{'_state_active': showGroups || showDiseases, '_state_diseases': showDiseases, '_state_groups': showGroups}">
                 <div class="a-dropdown__title js-dropdown-title js-drop-trigger" data-drop-title=""
-                     data-state="organs">Анализы по разделам</div>
+                     data-state="organs"><span *ngIf="showDiseases">Заболевания</span><span *ngIf="showGroups">Анализы по разделам</span>
+                </div>
                 <div class="a-dropdown__wrapper js-dropdown-wrap">
                   <div class="js-dropdown-scroll">
 
@@ -87,31 +90,51 @@
 
                     <div class="a-dropdown__content _state_groups" data-state="groups">
                       <div class="a-dropdown__col">
-                        <div class="a-dropdown__item par"
-                             onclick="ga('send', 'event', 'catalog', 'groups', 'Алергология. ImmunoCAP. Индивидуальные аллергены, IgE')">
+                        <div class="a-dropdown__item par" *ngFor="let brand of brandsOne; index as idx;">
                           <div class="a-checkbox"><input class="a-checkbox__input" type="checkbox" data-par=""
-                                                         name="filter[groups][1920]" value="1920"
-                                                         id="groups-1920"><label
+                                                         name="{{brand}}" value="1920"
+                                                         id="{{brand}}"
+                                                         formControlName="{{brand}}"
+                          ><label
                             class="a-checkbox__label js-checkbox-label"
                             data-text-name="Алергология. ImmunoCAP. Индивидуальные аллергены, IgE"
-                            for="groups-1920"><span>Алергология. ImmunoCAP. Индивидуальные аллергены, IgE</span><span
+                            for="{{brand}}"><span>{{brand}}</span><span
                             class='chevron _sgs' data-group='1920'></span></label></div>
                           <div style='clear:both'></div>
                         </div>
                       </div>
+
                       <div class="a-dropdown__col">
-                        <div class="a-dropdown__item par"
-                             onclick="ga('send', 'event', 'catalog', 'groups', 'Гормоны биологических жидкостей')">
+                        <div class="a-dropdown__item par" *ngFor="let brand of brandsTwo; index as idx;">
                           <div class="a-checkbox"><input class="a-checkbox__input" type="checkbox" data-par=""
-                                                         name="filter[groups][1952]" value="1952"
-                                                         id="groups-1952"><label
-                            class="a-checkbox__label js-checkbox-label" data-text-name="Гормоны биологических жидкостей"
-                            for="groups-1952"><span>Гормоны биологических жидкостей</span><span class='chevron _sgs'
-                                                                                                data-group='1952'></span></label>
-                          </div>
+                                                         name="{{brand}}" value="1920"
+                                                         id="{{brand}}"
+                                                         formControlName="{{brand}}"
+                          ><label
+                            class="a-checkbox__label js-checkbox-label"
+                            data-text-name="Алергология. ImmunoCAP. Индивидуальные аллергены, IgE"
+                            for="{{brand}}"><span>{{brand}}</span><span
+                            class='chevron _sgs' data-group='1920'></span></label></div>
                           <div style='clear:both'></div>
                         </div>
                       </div>
+
+                      <div class="a-dropdown__col">
+                        <div class="a-dropdown__item par" *ngFor="let brand of brandsThree; index as idx;">
+                          <div class="a-checkbox"><input class="a-checkbox__input" type="checkbox" data-par=""
+                                                         name="{{brand}}" value="1920"
+                                                         id="{{brand}}"
+                                                         formControlName="{{brand}}"
+                          ><label
+                            class="a-checkbox__label js-checkbox-label"
+                            data-text-name="Алергология. ImmunoCAP. Индивидуальные аллергены, IgE"
+                            for="{{brand}}"><span>{{brand}}</span><span
+                            class='chevron _sgs' data-group='1920'></span></label></div>
+                          <div style='clear:both'></div>
+                        </div>
+                      </div>
+
+
                     </div>
 
                   </div>
@@ -131,12 +154,14 @@
                 </div>
               </div>
 
-              <div class="a-filter__group">
-<!--            _state_active-->
+              <div class="a-filter__group" (click)="showDiseases = !showDiseases" style="display: none">
+                <!--            _state_active-->
                 <div
                   class="a-filter__drop js-drop-trigger"
                   data-drop-title="Все заболевания"
                   data-state="diseases"
+                  [ngClass]="{'_state_active': showDiseases}"
+
                 >
                   <span>Все заболевания</span>
                 </div>
@@ -151,68 +176,55 @@
             </div>
           </div>
         </div>
-        <div class="a-search__row _reset show-on-desktop js-filter-reset _state_active">
-          <button type="reset" name="filter[reset]" class="a-search__reset">Сбросить фильтры</button>
+        <div class="a-search__row  _reset show-on-desktop js-filter-reset _state_active" *ngIf="showReset">
+          <button type="reset" name="filter[reset]" (click)="onReset()" class="a-search__reset">Сбросить фильтры</button>
         </div>
       </form>
     </div>
 
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="brand_select">По категориям:</label>
-          <select class="form-control" name="" id="brand_select" [(ngModel)]="selectedBrand">
-            <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option>
-          </select>
-        </div>
-        <!--<ul class="list-group">-->
-        <!--<li class="list-group-item">Cras justo odio</li>-->
-        <!--<li class="list-group-item">Dapibus ac facilisis in</li>-->
-        <!--<li class="list-group-item">Morbi leo risus</li>-->
-        <!--</ul>-->
-      </div>
-      <div class="col-md-9">
+  </div>
+  <div class="row">
+    <div class="col">
 
-        <div class="container">
-          <app-card-loader [loop]="3" [height]="800" *ngIf="loading"></app-card-loader>
-          <div class="row" *ngIf="!loading">
-            <!-- List of Products -->
-            <div class="col-sm-4 mb-2"
-                 *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 6, currentPage: page }">
-              <div class="item">
-                <div class=" mb-r">
-                  <!--Card-->
-                  <div class="card border shadow card-cascade wider">
-                    <!--Card image-->
-                    <a [routerLink]="['/products/product', product.$key]">
-                      <div class="view overlay hm-white-slight">
-                        <img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">
-                        <a>
-                          <div class="mask waves-effect waves-light" mdbRippleRadius></div>
-                        </a>
-                      </div>
-                    </a>
-                    <!--/.Card image-->
-                    <!--Card content-->
-                    <div class="card-body text-center no-padding">
-                      <!--Category & Title-->
-                      <a class="text-muted">
-                        <h5>{{ product.productCategory }}</h5>
+      <div class="container">
+        <app-card-loader [loop]="4" [height]="800" *ngIf="loading"></app-card-loader>
+        <div class="row" *ngIf="!loading">
+          <!-- List of Products -->
+          <div class="col-sm-3 mb-2"
+               *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 8, currentPage: page }">
+            <div class="item">
+              <div class=" mb-r">
+                <!--Card-->
+                <div class="card border shadow card-cascade wider">
+                  <!--Card image-->
+                  <a [routerLink]="['/products/product', product.$key]">
+                    <div class="view overlay hm-white-slight">
+                      <img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">
+                      <a>
+                        <div class="mask waves-effect waves-light" mdbRippleRadius></div>
                       </a>
-                      <p class="card-title">
-                        <strong>
-                          <a [routerLink]="['/products/product', product.$key]" routerLinkActive="router-link-active">{{
-                            product.productName }}</a>
-                        </strong>
-                      </p>
-                      <!--Description-->
-                      <p class="card-text">{{ product.productDescription }}
-                      </p>
-                      <!--Card footer-->
-                      <div class="card-footer">
-                        <span class="left">{{ product.productPrice }} ₽</span>
-                        <span class="right">
+                    </div>
+                  </a>
+                  <!--/.Card image-->
+                  <!--Card content-->
+                  <div class="card-body text-center no-padding">
+                    <!--Category & Title-->
+                    <a class="text-muted">
+                      <h5>{{ product.productCategory }}</h5>
+                    </a>
+                    <p class="card-title">
+                      <strong>
+                        <a [routerLink]="['/products/product', product.$key]" routerLinkActive="router-link-active">{{
+                          product.productName }}</a>
+                      </strong>
+                    </p>
+                    <!--Description-->
+                    <p class="card-text">{{ product.productDescription }}
+                    </p>
+                    <!--Card footer-->
+                    <div class="card-footer">
+                      <span class="left">{{ product.productPrice }} ₽</span>
+                      <span class="right">
                         <a placement="top" mdbTooltip="Добавить в избранное" container="body"
                            (click)="addFavourite(product)">
                           <i class="fa fa-heart"></i>
@@ -221,31 +233,31 @@
                            (click)="addToCart(product)">
                           <i class="fa fa-shopping-cart"></i>
                         </a>
-                          <!--<a placement="top" mdbTooltip="Удалить" container="body" *ngIf="authService.isAdmin()"-->
-                          <!--(click)="removeProduct(product.$key)">-->
-                          <!--<i class="fa fa-trash"></i>-->
-                          <!--</a>-->
+                        <!--<a placement="top" mdbTooltip="Удалить" container="body" *ngIf="authService.isAdmin()"-->
+                        <!--(click)="removeProduct(product.$key)">-->
+                        <!--<i class="fa fa-trash"></i>-->
+                        <!--</a>-->
                       </span>
-                      </div>
-
                     </div>
-                    <!--/.Card content-->
 
                   </div>
-                  <!--/.Card-->
+                  <!--/.Card content-->
 
                 </div>
+                <!--/.Card-->
+
               </div>
             </div>
           </div>
-          <!-- Pagination -->
-          <div class="text-center mt-3">
-            <pagination-controls (pageChange)="page = $event" [nextLabel]="'Вперед'"
-                                 [previousLabel]="'Назад'"></pagination-controls>
-          </div>
         </div>
-        <!--/.Card-->
+        <!-- Pagination -->
+        <div class="text-center mt-3">
+          <pagination-controls (pageChange)="page = $event" [nextLabel]="'Вперед'"
+                               [previousLabel]="'Назад'"></pagination-controls>
+        </div>
       </div>
+      <!--/.Card-->
     </div>
   </div>
-  <app-add-product></app-add-product>
+</div>
+<app-add-product></app-add-product>

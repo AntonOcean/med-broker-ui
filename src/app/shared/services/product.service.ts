@@ -5,6 +5,7 @@ import {AuthService} from './auth.service';
 import {ToastrService} from './toastr.service';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {Category} from '../models/category';
 
 @Injectable()
 export class ProductService {
@@ -34,6 +35,10 @@ export class ProductService {
       return this.http.get<Product[]>(`/api/medset?q=${query}`);
     }
     return this.http.get<Product[]>('/api/medset');
+  }
+
+  getCategories(): Observable<Category> {
+    return this.http.get<Category>('/api/category');
   }
 
   createProduct(data: Product) {

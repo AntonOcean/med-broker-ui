@@ -4,13 +4,9 @@ import {Pipe, PipeTransform} from '@angular/core';
   name: 'filterByBrand'
 })
 export class FilterByBrandPipe implements PipeTransform {
-  transform(items: any, select?: any): any {
-    if (select !== 'Все') {
-      return select
-        ? items.filter(item => item.productCategory.trim() === select)
+  transform(items: any, select: any): any {
+      return select.length
+        ? items.filter(item => select.includes(item.productCategory.trim()))
         : items;
-    } else {
-      return items;
-    }
   }
 }
