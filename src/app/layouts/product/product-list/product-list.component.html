@@ -29,16 +29,16 @@
           <ul class="search__result js-search-result _blured hide">
             <li class="js-empty"></li>
           </ul>
-          <div class="a-search__main-select-wr show-on-desktop" (click)="showGroups = !showGroups">
-            <div
-              class="a-search__main-select show-on-desktop js-drop-trigger"
-              data-drop-title="Анализы по разделам"
-              data-state="groups"
-              [ngClass]="{'_state_active': showGroups}"
-            >
-              <span>Анализы по разделам</span>
-            </div>
-          </div>
+<!--          <div class="a-search__main-select-wr show-on-desktop" (click)="showGroups = !showGroups">-->
+<!--            <div-->
+<!--              class="a-search__main-select show-on-desktop js-drop-trigger"-->
+<!--              data-drop-title="Анализы по разделам"-->
+<!--              data-state="groups"-->
+<!--              [ngClass]="{'_state_active': showGroups}"-->
+<!--            >-->
+<!--              <span>Анализы по разделам</span>-->
+<!--            </div>-->
+<!--          </div>-->
           <button class="a-search__main-btn btn" type="submit" name="filter[submit]"><span class="sr">Поиск</span>
           </button>
           <button class="a-search__filters-trigger btn hide-on-desktop js-filter-trigger" type="button" name="filters">
@@ -182,89 +182,151 @@
         </div>
       </form>
     </div>
+    <app-card-loader [loop]="4" [height]="400" *ngIf="loading"></app-card-loader>
+    <div class="a-results js-tests" *ngIf="!loading">
+      <div class="a-results__header content">
+        <a href="javascript:void(0)" class="a-results__filter a-results__filter--all _active" data-category="all"
+           data-count="71">Найдено ({{productList.length}})</a>
 
+<!--        <a href="javascript:void(0)" class="a-results__filter a-results__filter&#45;&#45;test" data-category="test"-->
+<!--           data-count="67">Исследования (67)</a>-->
 
+<!--        <a href="javascript:void(0)" class="a-results__filter a-results__filter&#45;&#45;complex" data-category="complex"-->
+<!--           data-count="4">Комплексы (4)</a>-->
 
-
-
-
-  </div>
-  <div class="row">
-    <div class="col">
-
-      <div class="container">
-        <app-card-loader [loop]="4" [height]="800" *ngIf="loading"></app-card-loader>
-        <div class="row" *ngIf="!loading">
-          <!-- List of Products -->
-          <div class="col-sm-3 mb-2"
-               *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 8, currentPage: page }">
-            <div class="item">
-              <div class=" mb-r">
-                <!--Card-->
-                <div class="card border shadow card-cascade wider">
-                  <!--Card image-->
-                  <a [routerLink]="['/products/product', product.$key]">
-                    <div class="view overlay hm-white-slight">
-                      <img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">
-                      <a>
-                        <div class="mask waves-effect waves-light" mdbRippleRadius></div>
-                      </a>
-                    </div>
-                  </a>
-                  <!--/.Card image-->
-                  <!--Card content-->
-                  <div class="card-body text-center no-padding">
-                    <!--Category & Title-->
-                    <a [routerLink]="['/products/product', product.$key]" routerLinkActive="router-link-active"
-                       class="text-muted">
-                      <h5>{{ product.productCategory }}</h5>
-
-                      <p class="card-title">
-                        <strong>
-                          {{ product.productName }}
-                        </strong>
-                      </p>
-                    </a>
-                    <!--Description-->
-                    <p class="card-text">{{ product.productDescription }}
-                    </p>
-                    <!--Card footer-->
-                    <div class="card-footer">
-                      <span class="left">{{ product.productPrice }} ₽</span>
-                      <span class="right">
-<!--                        <a placement="top" mdbTooltip="Добавить в избранное" container="body"-->
-                        <!--                           (click)="addFavourite(product)">-->
-                        <!--                          <i class="fa fa-heart"></i>-->
-                        <!--                        </a>-->
-                        <a placement="top" mdbTooltip="Добавить в корзину" container="body"
-                           (click)="addToCart(product)">
-                          <i class="fa fa-shopping-cart"></i>
-                        </a>
-                        <!--<a placement="top" mdbTooltip="Удалить" container="body" *ngIf="authService.isAdmin()"-->
-                        <!--(click)="removeProduct(product.$key)">-->
-                        <!--<i class="fa fa-trash"></i>-->
-                        <!--</a>-->
-                      </span>
-                    </div>
-
-                  </div>
-                  <!--/.Card content-->
-
-                </div>
-                <!--/.Card-->
-
+      </div>
+      <div class="a-results__body content all">
+        <section class="h-card h-card--test js-card-item" data-category="test" style="display: flex;"
+        *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 4, currentPage: page }">
+          <a  class="h-card__link" title="{{ product.productName }}"></a>
+          <div class="h-card__inner">
+            <div class="h-card__col _name">
+              <div class="h-card__title">
+                <span class="h-card__category cat-test text-uppercase">Исследование</span>
+                <span class="h-card__code text-uppercase">{{ product.productCategory }}</span>
+              </div>
+              <h3 class="h-card__content">
+                {{ product.productName }} </h3>
+            </div>
+            <div class="h-card__col _duration">
+              <div class="h-card__title text-uppercase">Срок</div>
+              <div class="h-card__content">
+                {{ product.productQuatity }}
               </div>
             </div>
+            <div class="h-card__col _price">
+              <div class="h-card__title text-uppercase">Цена</div>
+              <div class="h-card__content">
+                <span class="nowrap">{{ product.productPrice }} ₽</span>
+              </div>
+
+            </div>
+            <div class="h-card__col _buy" (click)="addToCart(product)">
+              <a href="javascript:void(0)" class="h-card__buy btn-rr js-add-to-cart " data-id="1229">
+                <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M6.5 3.9L6 0H0V1.9H4.3L6.4 18.7H22.2V16.8H8.1L8 15.7L23.4 14.6L26 5L6.5 3.9ZM21.9 12.8L7.8 13.8L6.8 5.8L23.5 6.7L21.9 12.8Z"
+                    fill="#292665"></path>
+                  <path
+                    d="M2 3.8C3.10457 3.8 4 2.94934 4 1.9C4 0.850659 3.10457 0 2 0C0.89543 0 0 0.850659 0 1.9C0 2.94934 0.89543 3.8 2 3.8Z"
+                    transform="translate(6.19995 20.2)" fill="#292665"></path>
+                  <path
+                    d="M2 3.8C3.10457 3.8 4 2.94934 4 1.9C4 0.850659 3.10457 0 2 0C0.89543 0 0 0.850659 0 1.9C0 2.94934 0.89543 3.8 2 3.8Z"
+                    transform="translate(18.8 20.2)" fill="#292665"></path>
+                </svg>
+              </a>
+            </div>
           </div>
-        </div>
-        <!-- Pagination -->
+        </section>
+      </div>
+              <!-- Pagination -->
         <div class="text-center mt-3">
           <pagination-controls (pageChange)="page = $event" [nextLabel]="'Вперед'"
                                [previousLabel]="'Назад'"></pagination-controls>
         </div>
-      </div>
-      <!--/.Card-->
+<!--      <div class="a-list__more content">-->
+<!--        <a href="javascript:void(0)" class="btn-rr h-card__btn-show" style="display: inline-block;">Показать еще</a>-->
+<!--      </div>-->
     </div>
+
+
   </div>
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+
+<!--      <div class="container">-->
+<!--        <app-card-loader [loop]="4" [height]="800" *ngIf="loading"></app-card-loader>-->
+<!--        <div class="row" *ngIf="!loading">-->
+<!--          &lt;!&ndash; List of Products &ndash;&gt;-->
+<!--          <div class="col-sm-3 mb-2"-->
+<!--               *ngFor="let product of productList | filterByBrand: selectedBrand | paginate: { itemsPerPage: 8, currentPage: page }">-->
+<!--            <div class="item">-->
+<!--              <div class=" mb-r">-->
+<!--                &lt;!&ndash;Card&ndash;&gt;-->
+<!--                <div class="card border shadow card-cascade wider">-->
+<!--                  &lt;!&ndash;Card image&ndash;&gt;-->
+<!--                  <a [routerLink]="['/products/product', product.$key]">-->
+<!--                    <div class="view overlay hm-white-slight">-->
+<!--                      <img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">-->
+<!--                      <a>-->
+<!--                        <div class="mask waves-effect waves-light" mdbRippleRadius></div>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </a>-->
+<!--                  &lt;!&ndash;/.Card image&ndash;&gt;-->
+<!--                  &lt;!&ndash;Card content&ndash;&gt;-->
+<!--                  <div class="card-body text-center no-padding">-->
+<!--                    &lt;!&ndash;Category & Title&ndash;&gt;-->
+<!--                    <a [routerLink]="['/products/product', product.$key]" routerLinkActive="router-link-active"-->
+<!--                       class="text-muted">-->
+<!--                      <h5>{{ product.productCategory }}</h5>-->
+
+<!--                      <p class="card-title">-->
+<!--                        <strong>-->
+<!--                          {{ product.productName }}-->
+<!--                        </strong>-->
+<!--                      </p>-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;Description&ndash;&gt;-->
+<!--                    <p class="card-text">{{ product.productDescription }}-->
+<!--                    </p>-->
+<!--                    &lt;!&ndash;Card footer&ndash;&gt;-->
+<!--                    <div class="card-footer">-->
+<!--                      <span class="left">{{ product.productPrice }} ₽</span>-->
+<!--                      <span class="right">-->
+<!--&lt;!&ndash;                        <a placement="top" mdbTooltip="Добавить в избранное" container="body"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                           (click)="addFavourite(product)">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                          <i class="fa fa-heart"></i>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--                        <a placement="top" mdbTooltip="Добавить в корзину" container="body"-->
+<!--                           (click)="addToCart(product)">-->
+<!--                          <i class="fa fa-shopping-cart"></i>-->
+<!--                        </a>-->
+<!--                        &lt;!&ndash;<a placement="top" mdbTooltip="Удалить" container="body" *ngIf="authService.isAdmin()"&ndash;&gt;-->
+<!--                        &lt;!&ndash;(click)="removeProduct(product.$key)">&ndash;&gt;-->
+<!--                        &lt;!&ndash;<i class="fa fa-trash"></i>&ndash;&gt;-->
+<!--                        &lt;!&ndash;</a>&ndash;&gt;-->
+<!--                      </span>-->
+<!--                    </div>-->
+
+<!--                  </div>-->
+<!--                  &lt;!&ndash;/.Card content&ndash;&gt;-->
+
+<!--                </div>-->
+<!--                &lt;!&ndash;/.Card&ndash;&gt;-->
+
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Pagination &ndash;&gt;-->
+<!--        <div class="text-center mt-3">-->
+<!--          <pagination-controls (pageChange)="page = $event" [nextLabel]="'Вперед'"-->
+<!--                               [previousLabel]="'Назад'"></pagination-controls>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;/.Card&ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
 </div>
 <app-add-product></app-add-product>

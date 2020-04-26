@@ -1,71 +1,41 @@
 <br>
 <div class="container" *ngIf="cartProducts.length > 0">
   <div class="row">
-    <!-- List of Products -->
-    <div class="col-8">
-      <div class="row">
-        <div class="col-4" *ngFor="let product of cartProducts">
-          <div class="item">
-            <div class=" mb-r">
 
-              <!--Card-->
-              <div class="card border shadow card-cascade wider">
-
-                <!--Card image-->
-                <a [routerLink]="['/products/product', product.$key ]">
-
-                  <div class="view overlay hm-white-slight">
-                    <img [src]="product.productImageUrl" class="img-fluid" alt="" width="360px" height="640px">
-                    <a>
-                      <div class="mask waves-effect waves-light" mdbRippleRadius></div>
-                    </a>
-                  </div>
-                </a>
-
-                <!--/.Card image-->
-
-                <!--Card content-->
-                <div class="card-body text-center no-padding">
-                  <!--Category & Title-->
-                  <a [routerLink]="['/products/product', product.$key]" class="text-muted">
-                    <h5>{{ product.productCategory }}</h5>
-
-                  <h5 class="card-title">
-                    <strong>
-                      {{ product.productName }}
-                    </strong>
-                  </h5>
-                  </a>
-                  <!--Description-->
-                  <p class="card-text">{{ product.productDescription }}
-                  </p>
-
-                  <!--Card footer-->
-                  <div class="card-footer">
-                    <span class="left">{{ product.productPrice }} ₽</span>
-                    <span class="right">
-                      <a placement="top" mdbTooltip="Просмотр" container="body"
-                         [routerLink]="['/products/product', product.$key]">
-                        <i class="fa fa-eye"></i>
-                      </a>
-                      <a placement="top" mdbTooltip="Убрать" container="body" (click)="removeCartProduct(product)">
-                        <i class="fa fa-trash"></i>
-                      </a>
-                    </span>
-                  </div>
-
-                </div>
-                <!--/.Card content-->
-
+    <div class="a-results__body content all col-8">
+        <section class="h-card h-card--test js-card-item" data-category="test" style="display: flex;"
+        *ngFor="let product of cartProducts">
+          <a class="h-card__link" title="{{ product.productName }}"></a>
+          <div class="h-card__inner">
+            <div class="h-card__col _name">
+              <div class="h-card__title">
+                <span class="h-card__category cat-test text-uppercase">Исследование</span>
+                <span class="h-card__code text-uppercase">{{ product.productCategory }}</span>
               </div>
-              <!--/.Card-->
+              <h3 class="h-card__content">
+                {{ product.productName }} </h3>
+            </div>
+            <div class="h-card__col _duration">
+              <div class="h-card__title text-uppercase">Срок</div>
+              <div class="h-card__content">
+                {{ product.productQuatity }}
+              </div>
+            </div>
 
+            <div class="h-card__col _buy" (click)="removeCartProduct(product)">
+              <a href="javascript:void(0)" class="h-card__buy btn-rr js-add-to-cart " data-id="1229">
+<!--                <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+                  <i class="fa fa-trash"></i>
+<!--                </svg>-->
+              </a>
             </div>
           </div>
-        </div>
+        </section>
       </div>
 
-    </div>
+
+
+
     <div class="col-4">
       <app-cart-calculator [products]="cartProducts"></app-cart-calculator>
     </div>

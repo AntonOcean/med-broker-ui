@@ -6,6 +6,7 @@ import {ToastrService} from './toastr.service';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Category} from '../models/category';
+import {Servs} from '../models/servs';
 
 @Injectable()
 export class ProductService {
@@ -32,9 +33,9 @@ export class ProductService {
 
   getProducts(query = ''): Observable<Product[]> {
     if (query) {
-      return this.http.get<Product[]>(`/api/medset?q=${query}`);
+      return this.http.get<Product[]>(`/api/servs?q=${query}`);
     }
-    return this.http.get<Product[]>('/api/medset');
+    return this.http.get<Product[]>('/api/servs');
   }
 
   getCategories(): Observable<Category> {
@@ -46,7 +47,34 @@ export class ProductService {
   }
 
   getProductById(key: string) {
-    return this.http.get<Product>(`/api/medset/${key}`);
+    return this.http.get<Product>(`/api/servs/${key}`);
+  }
+
+  getSuggest(data) {
+    return this.http.post<Servs>('/original/suggest', {
+      patient: {
+        patient_id: +data.client_id,
+        sex: 1,
+        birthday: 1996
+      },
+      selected_servs: data.servs
+    });
+  }
+
+  createOrder(data) {
+    return this.http.post('/original/confirm', {
+      patient: {
+        patient_id: +data.client_id,
+        sex: 1,
+        birthday: 1996
+      },
+      order_info: {
+        order_id: Date.now(),
+        depart_id: 5,
+        order_date: Math.round(Date.now() / 1000)
+      },
+      final_servs: data.servs
+    });
   }
 
   updateProduct(data: Product) {

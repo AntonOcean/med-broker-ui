@@ -6,6 +6,7 @@ import {User, UserDetail} from '../../../../shared/models/user';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {CheckOutService} from '../../../../shared/services/checkout.service';
 
 @Component({
   selector: 'app-billing-details',
@@ -21,11 +22,13 @@ export class BillingDetailsComponent implements OnInit {
     authService: AuthService,
     private billingService: BillingService,
     productService: ProductService,
-    private router: Router
+    private router: Router,
+    private title: CheckOutService
   ) {
+    this.title.changeMessage('Данные заказа');
     /* Hiding Shipping Tab Element */
     document.getElementById('productsTab').style.display = 'none';
-    // document.getElementById('shippingTab').style.display = 'none';
+    // docsument.getElementById('shippingTab').style.display = 'none';
     document.getElementById('billingTab').style.display = 'block';
     document.getElementById('resultTab').style.display = 'none';
 

@@ -5,6 +5,8 @@ import * as Jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import {ToastrService} from '../../../../shared/services/toastr.service';
 import {Router} from '@angular/router';
+import {AuthService} from '../../../../shared/services/auth.service';
+import {CheckOutService} from '../../../../shared/services/checkout.service';
 
 
 @Component({
@@ -21,8 +23,11 @@ export class ResultComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private toastService: ToastrService,
-    private router: Router
+    private router: Router,
+    private userService: AuthService,
+    private title: CheckOutService
     ) {
+    this.title.changeMessage('Заказ');
     /* Hiding Billing Tab Element */
     document.getElementById('productsTab').style.display = 'none';
     // document.getElementById('shippingTab').style.display = 'none';
@@ -61,8 +66,22 @@ export class ResultComponent implements OnInit {
   }
 
   billing() {
-    this.toastService.success('Поздравляем!', 'Вы успешно оформили заказ');
-    this.productService.removeAllLocalCartProduct();
-    this.router.navigate(['/']);
+    const products: Product[] = this.productService.getLocalCartProducts();
+    const servs = [];
+    products.forEach((item) => {
+      servs.push({serv_id: item.$key});
+    });
+    const data = {
+      client_id: this.userService.getLoggedInUser().createdOn,
+      servs
+    };
+    this.productService.createOrder(data).subscribe(r => {
+      this.toastService.success('Поздравляем!', 'Вы успешно оформили заказ');
+      this.productService.removeAllLocalCartProduct();
+      this.router.navigate(['/']);
+    },
+      err => {
+      this.toastService.error('Ошибка Оформления заказа', '');
+      });
   }
 }

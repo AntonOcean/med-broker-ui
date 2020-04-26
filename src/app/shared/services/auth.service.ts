@@ -58,7 +58,6 @@ export class AuthService {
   getLoggedInUser(): User {
     const loggedUser: User = new User();
     const user = this.firebaseAuth.auth.currentUser;
-
     if (user) {
       this.userDetails = user;
       if (user != null) {
@@ -68,6 +67,7 @@ export class AuthService {
         loggedUser.phoneNumber = user.phoneNumber;
         loggedUser.avatar = user.photoURL;
         loggedUser.isAdmin = this.dbUser.isAdmin;
+        loggedUser.createdOn = this.dbUser.createdOn;
       }
     } else {
       this.userDetails = null;

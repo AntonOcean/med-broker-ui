@@ -5,6 +5,7 @@ import {ProductsComponent} from './products/products.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from '../../../shared/services/auth_gaurd';
+import {SuggestComponent} from './suggest/suggest.component';
 
 export const checkoutRoutes: Routes = [
   {
@@ -14,6 +15,11 @@ export const checkoutRoutes: Routes = [
     children: [
       {
         path: '',
+        component: SuggestComponent,
+        outlet: 'checkOutlet'
+      },
+      {
+        path: 'confirm',
         component: ProductsComponent,
         outlet: 'checkOutlet'
       },
