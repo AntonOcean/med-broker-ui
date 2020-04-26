@@ -11,7 +11,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build --prod --no-progress --output-hashing=all
+RUN npm run build --prod --no-progress
 EXPOSE 4200
 RUN cd dist/med-broker-ui
 
