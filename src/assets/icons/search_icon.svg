@@ -1,0 +1,24 @@
+<svg width="25" height="26" viewBox="0 0 25 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>search_icon</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-2084 978)" figma:type="canvas">
+<g id="search_icon" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Oval 2" style="mix-blend-mode:normal;" figma:type="vector">
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(2084 -978)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(2084 -978)" fill="#BE216A" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+<g id="Line" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path2_stroke" transform="translate(2100.35 -960.731)" fill="#BE216A" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 10 20C 15.5228 20 20 15.5228 20 10C 20 4.47715 15.5228 0 10 0C 4.47715 0 0 4.47715 0 10C 0 15.5228 4.47715 20 10 20Z"/>
+<path id="path1_stroke_2x" d="M 10 23C 17.1797 23 23 17.1797 23 10L 17 10C 17 13.866 13.866 17 10 17L 10 23ZM 23 10C 23 2.8203 17.1797 -3 10 -3L 10 3C 13.866 3 17 6.13401 17 10L 23 10ZM 10 -3C 2.8203 -3 -3 2.8203 -3 10L 3 10C 3 6.13401 6.13401 3 10 3L 10 -3ZM -3 10C -3 17.1797 2.8203 23 10 23L 10 17C 6.13401 17 3 13.866 3 10L -3 10Z"/>
+<path id="path2_stroke" d="M 1.06066 -1.06066C 0.474874 -1.64645 -0.474874 -1.64645 -1.06066 -1.06066C -1.64645 -0.474874 -1.64645 0.474874 -1.06066 1.06066L 1.06066 -1.06066ZM 6.01041 8.13173C 6.59619 8.71751 7.54594 8.71751 8.13173 8.13173C 8.71751 7.54594 8.71751 6.59619 8.13173 6.01041L 6.01041 8.13173ZM -1.06066 1.06066L 6.01041 8.13173L 8.13173 6.01041L 1.06066 -1.06066L -1.06066 1.06066Z"/>
+</defs>
+</svg>
