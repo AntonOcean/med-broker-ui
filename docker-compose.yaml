@@ -16,11 +16,3 @@ services:
     volumes:
       - ./medical_broker:/app
     command: gunicorn frontend_api.app:app -b :8081 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
-
-  nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
-    container_name: nginx-spa
-    depends_on:
-      - frontend_api
