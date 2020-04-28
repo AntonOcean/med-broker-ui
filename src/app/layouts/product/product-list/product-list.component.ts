@@ -50,7 +50,7 @@ export class ProductListComponent implements OnInit {
       }
     });
 
-    this.getAllCategories();
+    // this.getAllCategories();
 
     this.searchForm.valueChanges.pipe(
       debounceTime(800),

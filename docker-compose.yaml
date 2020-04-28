@@ -1,0 +1,26 @@
+version: '3.2'
+
+services:
+  frontend:
+    build: .
+    ports:
+    - "80:80"
+    depends_on:
+      - frontend_api
+      - nginx
+
+  frontend_api:
+    build:
+      context: ./medical_broker
+      dockerfile: Dockerfile.frontend_api
+    volumes:
+      - ./medical_broker:/app
+    command: gunicorn frontend_api.app:app -b :8081 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: nginx-spa
+    depends_on:
+      - frontend_api
