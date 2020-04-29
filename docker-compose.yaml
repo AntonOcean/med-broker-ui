@@ -15,6 +15,8 @@ services:
       dockerfile: Dockerfile.frontend_api
     volumes:
       - ./medical_broker:/app
+    ports:
+      - "8081:8081"
     command: gunicorn frontend_api.app:app -b :8081 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
 
   nginx:
