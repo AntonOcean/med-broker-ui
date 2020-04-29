@@ -33,13 +33,13 @@ export class ProductService {
 
   getProducts(query = ''): Observable<Product[]> {
     if (query) {
-      return this.http.get<Product[]>(`/v1/ui/servs?q=${query}`);
+      return this.http.get<Product[]>(`/api/servs?q=${query}`);
     }
-    return this.http.get<Product[]>('/v1/ui/servs');
+    return this.http.get<Product[]>('/api/servs');
   }
 
   getCategories(): Observable<Category> {
-    return this.http.get<Category>('/v1/ui/category');
+    return this.http.get<Category>('/api/category');
   }
 
   createProduct(data: Product) {
@@ -47,11 +47,11 @@ export class ProductService {
   }
 
   getProductById(key: string) {
-    return this.http.get<Product>(`/v1/ui/servs/${key}`);
+    return this.http.get<Product>(`/api/servs/${key}`);
   }
 
   getSuggest(data) {
-    return this.http.post<Servs>('/v1/suggest', {
+    return this.http.post<Servs>('/original/suggest', {
       patient: {
         patient_id: +data.client_id,
         sex: 1,
@@ -62,7 +62,7 @@ export class ProductService {
   }
 
   createOrder(data) {
-    return this.http.post('/v1/confirm', {
+    return this.http.post('/original/confirm', {
       patient: {
         patient_id: +data.client_id,
         sex: 1,
@@ -71,7 +71,7 @@ export class ProductService {
       order_info: {
         order_id: Date.now(),
         depart_id: 5,
-        order_date: Math.round(Date.now() / 1000)
+        order_date: ''
       },
       final_servs: data.servs
     });
