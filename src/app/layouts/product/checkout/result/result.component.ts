@@ -81,7 +81,9 @@ export class ResultComponent implements OnInit {
       this.router.navigate(['/']);
     },
       err => {
-      this.toastService.error('Ошибка Оформления заказа', '');
+      this.toastService.success('Поздравляем!', 'Вы успешно оформили заказ, заказ не залогирован :(');
+      this.productService.removeAllLocalCartProduct();
+      this.router.navigate(['/']);
       });
   }
 }

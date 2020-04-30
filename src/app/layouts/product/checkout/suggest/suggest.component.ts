@@ -54,6 +54,7 @@ export class SuggestComponent implements OnInit {
       },
       (err) => {
         this.toastrService.error('Ошибка Рекомендации', err);
+        this.router.navigate(['checkouts', {outlets: {checkOutlet: ['confirm']}}]);
       }
     );
 
