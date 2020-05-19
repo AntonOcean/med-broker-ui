@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    if (this.userDetails !== null) {
+    if (this.firebaseAuth.auth.currentUser) {
       return true;
     }
   }
