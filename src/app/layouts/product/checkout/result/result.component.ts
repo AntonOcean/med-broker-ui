@@ -19,6 +19,7 @@ export class ResultComponent implements OnInit {
   date: number;
   totalPrice = 0;
   tax = 6.4;
+  buyLock = false;
 
   constructor(
     private productService: ProductService,
@@ -66,6 +67,7 @@ export class ResultComponent implements OnInit {
   }
 
   billing() {
+    this.buyLock = true;
     const products: Product[] = this.productService.getLocalCartProducts();
     const servs = [];
     products.forEach((item) => {

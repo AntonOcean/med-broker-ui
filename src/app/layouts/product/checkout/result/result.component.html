@@ -43,7 +43,7 @@
             </td>
             <td></td>
             <td class="col-md-1 text-center">{{product.productSeller}}</td>
-            <td class="col-md-1 text-center">{{product.productPrice}} ₽</td>
+            <td class="col-md-2 text-center">{{product.productPrice}} ₽</td>
           </tr>
           <tr>
             <td>  </td>
@@ -71,13 +71,13 @@
             <td class="text-right">
               <p><strong>Всего: </strong></p>
             </td>
-            <td class="text-center text-danger">
-              <h4><strong>{{totalPrice + tax }} ₽</strong></h4>
+            <td class="text-center">
+              <strong>{{totalPrice + tax }} ₽</strong>
             </td>
           </tr>
           </tbody>
         </table>
-        <button type="button" class="btn btn-success btn-lg btn-block" (click)="billing()" style="background: #23426e; border-color: #23426e;">
+        <button type="button" [disabled]="buyLock" class="btn btn-success btn-lg btn-block" (click)="billing()" style="background: #23426e; border-color: #23426e;">
           Оплатить сейчас   <span class="glyphicon glyphicon-chevron-right"></span>
         </button>
       </div>
