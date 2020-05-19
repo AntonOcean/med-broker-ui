@@ -1,16 +1,10 @@
 {
-  "/api/*": {
+  "/v1/ui/*": {
     "target": "http://95.163.248.36:8081",
-    "secure": false,
-    "pathRewrite": {
-      "^/api": "/v1/ui"
-    }
+    "secure": false
   },
-  "/original/*": {
+  "/v1/*": {
     "target": "http://95.163.248.36:8080",
-    "secure": false,
-    "pathRewrite": {
-      "^/original": "/v1"
-    }
+    "secure": false
   }
 }
