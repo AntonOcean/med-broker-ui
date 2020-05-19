@@ -16,17 +16,17 @@
 
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="isCollapsed = true">
         <a class="nav-link" href="javascript:;;" [routerLink]="[ '/' ]"><strong>{{this.translate.data["HOME"] | translate}}</strong>
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/products/all-products' ]"><strong>{{
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="isCollapsed = true">
+        <a class="nav-link" href="javascript:;;" [routerLink]="[ '/products/all-products' ]"><strong>{{
           this.translate.data["PRODUCTS"] | translate}}</strong></a>
       </li>
       <li class="nav-item" *ngIf="authService.isAdmin()" [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact:true}">
+          [routerLinkActiveOptions]="{exact:true}" (click)="isCollapsed = true">
         <a class="nav-link" href="http://95.163.248.36/"><strong>{{
           this.translate.data["TASKBOARD"] | translate}}</strong></a>
       </li>
@@ -47,7 +47,7 @@
 <!--        </div>-->
 
 <!--      </li>-->
-      <li class="nav-item">
+      <li class="nav-item" (click)="isCollapsed = true">
         <div>
           <a class="nav-link" href="javascript:;;" [routerLink]="['/products/cart-items']">
             <i class="fa fa-shopping-cart" [routerLinkActive]="['fa-inverse']" [routerLinkActiveOptions]="{exact:true}">
@@ -56,7 +56,7 @@
           </a>
         </div>
       </li>
-      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+      <li class="nav-item" *ngIf="authService.isLoggedIn()" (click)="isCollapsed = true">
         <a class="nav-link" [routerLink]="['/users']">
           <i class="fa fa-user mr-1"></i><strong>{{this.translate.data["MYACCOUNT"] | translate}}</strong></a>
       </li>
@@ -120,14 +120,14 @@
       <!--Hindi (hin)</a>-->
       <!--</div>-->
       <!--</li>-->
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+      <li class="nav-item" [routerLinkActive]="['active']" (click)="isCollapsed = true" [routerLinkActiveOptions]="{exact:true}"
           *ngIf="!authService.isLoggedIn()">
         <a class="nav-link" [routerLink]="[ '/login' ]">
           <i class="fa fa-sign-in mr-1"></i> <strong>{{this.translate.data["SIGNIN"] | translate}}</strong></a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
           *ngIf="authService.isLoggedIn()">
-        <a class="nav-link" (click)="logout()">
+        <a class="nav-link" (click)="logout(); isCollapsed = true">
           <i class="fa fa-sign-in mr-1"></i><strong>{{this.translate.data["LOGOUT"] | translate}}</strong></a>
       </li>
       <!--<li class="nav-item">-->
