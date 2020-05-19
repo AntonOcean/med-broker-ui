@@ -71,7 +71,7 @@ export class ResultComponent implements OnInit {
     const products: Product[] = this.productService.getLocalCartProducts();
     const servs = [];
     products.forEach((item) => {
-      servs.push({serv_id: item.$key});
+      servs.push({serv_code: `${item.productCategory}`});
     });
     const data = {
       client_id: this.userService.getLoggedInUser().createdOn,

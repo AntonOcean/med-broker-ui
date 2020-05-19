@@ -47,7 +47,7 @@ export class ProductService {
   }
 
   getProductById(key: string) {
-    return this.http.get<Product>(`/v1/ui/servs/${key}`);
+    return this.http.get<Product>(`/v1/ui/serv?id=${key}`);
   }
 
   getSuggest(data) {

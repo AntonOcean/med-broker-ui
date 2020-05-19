@@ -27,7 +27,7 @@ export class SuggestComponent implements OnInit {
     const products: Product[] = productService.getLocalCartProducts();
     const servs = [];
     products.forEach((item) => {
-      servs.push({serv_id: item.$key});
+      servs.push({serv_code: `${item.productCategory}`});
     });
     const data = {
       client_id: userService.getLoggedInUser().createdOn,
@@ -41,7 +41,7 @@ export class SuggestComponent implements OnInit {
         }
 
         resp.suggests.forEach(item => {
-          productService.getProductById(item.serv_id).subscribe(
+          productService.getProductById(item.serv_code).subscribe(
             product => {
               this.suggestProducts.push({product, message: item.message});
             },

@@ -1,6 +1,6 @@
 class OneServ {
   // tslint:disable-next-line:variable-name
-  serv_id: string;
+  serv_code: string;
   message: string;
 }
 
